@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; connect-src 'self' https://api.github.com; base-uri 'none'; form-action 'none'">
+<title>Сборка SHIZOSTAN</title>
+<style>
+:root{--t:#f5f0fb;--m:#a99fbd;--g:rgba(255,255,255,.06);--l:rgba(255,255,255,.1);--pink:#f03fd0;--ok:#5fe39a;--warn:#ffc457;--bad:#ff6b81;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--t);font:15px/1.5 "Segoe UI",system-ui,sans-serif;background:linear-gradient(180deg,#0b0a1e,#1b1140 55%,#4a1f74) fixed}
+main{max-width:860px;margin:0 auto;padding:28px 16px 60px;display:flex;flex-direction:column;gap:16px}
+h1{font-size:30px;margin:0}h2{font-size:17px;margin:0}p{margin:0}.m{color:var(--m)}
+a{color:#e9a6ff}
+.card{background:var(--g);border:1px solid var(--l);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.grow{flex:1;min-width:0}
+.stat{flex:1;min-width:140px}.stat b{font-size:22px;display:block}
+button{font:inherit;color:inherit;cursor:pointer;border:1px solid var(--l);background:rgba(255,255,255,.1);border-radius:11px;padding:9px 16px;font-weight:600}
+button:hover:not(:disabled){background:rgba(255,255,255,.18)}button:disabled{opacity:.5;cursor:default}
+button.go{background:linear-gradient(180deg,#f346d6,#a046f5);border:0;padding:13px 26px;font-size:16px}
+button.x{padding:5px 11px}button.del{color:var(--bad)}
+input,textarea{font:inherit;color:inherit;width:100%;background:rgba(8,5,20,.5);border:1px solid var(--l);border-radius:11px;padding:10px 13px}
+:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:13px;color:var(--m)}
+ol{margin:0;padding-left:20px;color:var(--m)}ol b{color:var(--t)}
+#drop{border:2px dashed var(--l);border-radius:16px;padding:26px;text-align:center;cursor:pointer}
+#drop.over{border-color:var(--pink);background:rgba(240,63,208,.12)}
+ul{list-style:none;margin:0;padding:0;max-height:46vh;overflow:auto}
+li{display:flex;gap:10px;align-items:center;padding:8px 2px;border-top:1px solid var(--l)}li:first-child{border:0}
+li .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+li.off .n{text-decoration:line-through;color:var(--m)}
+.tag{font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;white-space:nowrap}
+.add,.new{background:rgba(95,227,154,.18);color:var(--ok)}.changed{background:rgba(255,196,87,.18);color:var(--warn)}.dupe,.gone{background:rgba(255,107,129,.18);color:var(--bad)}
+pre{margin:0;white-space:pre-wrap;word-break:break-word;font:13px/1.6 Consolas,monospace;background:rgba(8,5,20,.5);border-radius:12px;padding:14px}
+.okc{color:var(--ok)}.badc{color:var(--bad)}.warnc{color:var(--warn)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+  <h1>Сборка SHIZOSTAN</h1>
+
+  <section class="card" id="login" hidden>
+    <h2>Вход для админов</h2>
+    <ol>
+      <li>Попроси владельца добавить твой аккаунт GitHub в репозиторий и <b>прими приглашение</b> из письма.</li>
+      <li>Открой <a id="mk" target="_blank" rel="noopener">страницу создания ключа</a>, внизу нажми <b>Generate token</b> и скопируй ключ (он начинается на <b>ghp_</b>).</li>
+      <li>Вставь ключ сюда. Он хранится только в этом браузере.</li>
+    </ol>
+    <div class="row">
+      <input id="token" class="grow" type="password" autocomplete="off" placeholder="ghp_…" aria-label="Ключ доступа GitHub">
+      <button id="enter" class="go">Войти</button>
+    </div>
+    <p class="m">Ключ даёт право изменять твои публичные репозитории — никому его не показывай. Отозвать можно на той же странице GitHub.</p>
+  </section>
+
+  <section class="card">
+    <div class="row">
+      <div class="stat"><span class="m">Собрана версия</span><b id="cur">…</b></div>
+      <div class="stat"><span class="m">У игроков сейчас</span><b id="live">…</b></div>
+      <div class="stat"><span class="m">Модов</span><b id="count">…</b></div>
+      <button id="logout" hidden>Выйти</button>
+    </div>
+    <p id="sync" class="m" role="status"></p>
+  </section>
+
+  <section class="card">
+    <div id="drop" tabindex="0" role="button">Перетащи сюда файлы <b>.jar</b> или нажми, чтобы выбрать<br><span class="m">Обновляешь мод? Добавь новый файл и удали старый.</span></div>
+    <input id="pick" type="file" accept=".jar" multiple hidden>
+    <input id="find" type="search" placeholder="Поиск мода…" aria-label="Поиск мода">
+    <ul id="list"></ul>
+  </section>
+
+  <section class="card">
+    <h2>Выпустить обновление</h2>
+    <p id="changes" class="m"></p>
+    <label>Номер версии<input id="ver" autocomplete="off"></label>
+    <label>Что нового (игроки увидят это в лаунчере)<textarea id="notes" rows="3"></textarea></label>
+    <div class="row"><button id="pub" class="go">Опубликовать</button><span id="status" class="m grow" role="status"></span></div>
+    <pre id="out" hidden></pre>
+  </section>
+</main>
+<script type="module" src="ui.js"></script>
+</body>
+</html>
