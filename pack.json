@@ -1,6 +1,6 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
@@ -190,8 +190,8 @@
     },
     {
       "path": "mods/istoki-client.jar",
-      "sha1": "e166c9268fafc7705f471c1a3f297c3cbcaddc7d",
-      "size": 10155431
+      "sha1": "6296154cbc1f73dfa7def0604b7d07958654f9ea",
+      "size": 10179655
     },
     {
       "path": "mods/istoki-menu.jar",
