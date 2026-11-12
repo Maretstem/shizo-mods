@@ -102,6 +102,8 @@ export async function publish(gh, state, { version, changelog = '', adds = [], r
     ...state.pack,
     version,
     changelog: String(changelog).trim(),
+    // История для блока «Что нового» в лаунчере (то же правило, что в tools/make-pack.mjs)
+    history: [{ version, date: new Date().toISOString().slice(0, 10), changelog: String(changelog).trim() }, ...(state.pack.history ?? []).filter((h) => h.version !== version)].slice(0, 30),
     files: entries.sort((a, b) => a.path.localeCompare(b.path)).map((f) => (keepsUserEdits(f.path) ? { ...f, overwrite: false } : f)),
   };
   tree.push({ path: 'pack.json', mode: '100644', type: 'blob', content: JSON.stringify(pack, null, 2) + '\n' });
