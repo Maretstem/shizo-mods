@@ -1,0 +1,457 @@
+{
+  "name": "SHIZOSTAN",
+  "version": "1.0.0",
+  "minecraft": "1.21.11",
+  "loader": {
+    "type": "fabric",
+    "version": "0.20.1"
+  },
+  "changelog": "Первая версия сборки: 89 модов.",
+  "files": [
+    {
+      "path": "mods/absolutrevive-v1.2.1b.jar",
+      "sha1": "96721899394af095a83e04fe87784cc6754bcaf6",
+      "size": 1804300
+    },
+    {
+      "path": "mods/appleskin-fabric-mc1.21.11-3.0.8.jar",
+      "sha1": "441fdbf4e9c34fb61517ceb8e15618950dc4d314",
+      "size": 180107
+    },
+    {
+      "path": "mods/architectury-19.0.1-fabric.jar",
+      "sha1": "2d40563f7e36f7a03f094031aeaacb175117928e",
+      "size": 568474
+    },
+    {
+      "path": "mods/BadOptimizations-2.4.1-1.21.11.jar",
+      "sha1": "70fa28d5a7a1fdd61dd804ca6ac411750da1473f",
+      "size": 269545
+    },
+    {
+      "path": "mods/balm-fabric-1.21.11-21.11.9.1.jar",
+      "sha1": "5bb8ca8fb46953da5777c1b3c12af5b397b46b48",
+      "size": 873058
+    },
+    {
+      "path": "mods/BendableCuboidsFabric-2.0.1+mc.1.21.11.jar",
+      "sha1": "75f2b226f1f46c6d450b08009f69bdc0043c3e9a",
+      "size": 49603
+    },
+    {
+      "path": "mods/binary-barrier-1.2.0.jar",
+      "sha1": "6cc2d8923079540a68c803047ba768e5d6698061",
+      "size": 147464
+    },
+    {
+      "path": "mods/brewery-0.14.0+1.21.11-rc2.jar",
+      "sha1": "26086547f6223dad62eead198f01928d29d09817",
+      "size": 777078
+    },
+    {
+      "path": "mods/cardinal-components-api-7.3.2.jar",
+      "sha1": "824bbaaae302bd3a09ccd65146cb93037db55c81",
+      "size": 234906
+    },
+    {
+      "path": "mods/carryon-fabric-1.21.11-2.9.2.jar",
+      "sha1": "4bfba2e01b70b0f8f5c21964aa8c98681b572b13",
+      "size": 375642
+    },
+    {
+      "path": "mods/chat_heads-1.3.2-fabric-1.21.11.jar",
+      "sha1": "4eceb683cbe8c9ec2ba354825f8076ab2370d4d1",
+      "size": 100191
+    },
+    {
+      "path": "mods/chefs-delight-1.0.5-fabric-1.21.11.jar",
+      "sha1": "7848579a9cc8be4299de98010741e03edca7d4d8",
+      "size": 110671
+    },
+    {
+      "path": "mods/cloth-config-21.11.153-fabric.jar",
+      "sha1": "4c224606a963bce223db5b27edb4959ecf40d4ee",
+      "size": 1148427
+    },
+    {
+      "path": "mods/Clumps-fabric-1.21.11-29.0.0.1.jar",
+      "sha1": "626fde9e970030cfc8cb64cd0a1abfc03d37ecc2",
+      "size": 20355
+    },
+    {
+      "path": "mods/Continents_26.2_v1.1.14.jar",
+      "sha1": "8c2f1a5483b453b5cdb341da3aa36670d402336d",
+      "size": 60529
+    },
+    {
+      "path": "mods/Corgilib-Fabric-1.21.11-9.0.0.1.jar",
+      "sha1": "523b53ebb6142080b1ab9971ac6042cd25215572",
+      "size": 685864
+    },
+    {
+      "path": "mods/cull-fewer-leaves-1.1.2+1.21.11-fabric.jar",
+      "sha1": "de9ddf108622b1b517f575dff5d7ebbd152cf47b",
+      "size": 410006
+    },
+    {
+      "path": "mods/CustomSkinLoader_Universal-15.1.jar",
+      "sha1": "324e6921ecd576e44875981466e7f22170b6541a",
+      "size": 222917
+    },
+    {
+      "path": "mods/debugify-1.21.11+1.2.jar",
+      "sha1": "996ddc157481f3350310fde42da3fb89bab067bc",
+      "size": 379984
+    },
+    {
+      "path": "mods/dynamic-fps-3.11.6+minecraft-1.21.11-fabric.jar",
+      "sha1": "2e5ab45e69b43812491cfa34f8f7a4ce7623c233",
+      "size": 219961
+    },
+    {
+      "path": "mods/elytratrims-fabric-4.6.2+1.21.11.jar",
+      "sha1": "57503f3b3435fc5c880cb3c786d51c16b677742f",
+      "size": 816105
+    },
+    {
+      "path": "mods/emotecraft-fabric-for-MC1.21.11-3.2.0-b.build.176.jar",
+      "sha1": "5d82dfad79cc6e46fec4b2df40c21ff4aab96821",
+      "size": 898718
+    },
+    {
+      "path": "mods/entityculling-fabric-1.11.3-mc1.21.11.jar",
+      "sha1": "ce2e1cf7e343a625d184c80ccea582d468686a2e",
+      "size": 1529094
+    },
+    {
+      "path": "mods/fabric-api-0.141.6+1.21.11.jar",
+      "sha1": "c98467cbbaf4d197377266795ae015f4130d65b6",
+      "size": 2426039
+    },
+    {
+      "path": "mods/fabric-language-kotlin-1.14.2+kotlin.2.4.21.jar",
+      "sha1": "f1d4ab6ecd54d9782521333a87eb50724ecb03e0",
+      "size": 8142878
+    },
+    {
+      "path": "mods/FallingTree-1.21.11-1.21.11.3.jar",
+      "sha1": "9daded812605231a5e1e9461a6e04258d0424761",
+      "size": 488371
+    },
+    {
+      "path": "mods/FarmersDelight-1.21.11-3.6.16+refabricated.jar",
+      "sha1": "44cb71429f0db84bc09b48a658340d7fb3184fff",
+      "size": 3342279
+    },
+    {
+      "path": "mods/fastquit-3.1.3+mc1.21.11.jar",
+      "sha1": "9ba127357e1fc9ff800496250fb510f70f394714",
+      "size": 61123
+    },
+    {
+      "path": "mods/Female-Gender-Mod-fabric-5.0.0-Beta.3+1.21.11.jar",
+      "sha1": "ed5dd8a7ee049c7ef06df0c3305486dcf67bfaa7",
+      "size": 1229742
+    },
+    {
+      "path": "mods/ferritecore-8.2.0-fabric.jar",
+      "sha1": "c2e2f5e008f5bc9f401dfad8ca94909917006b65",
+      "size": 80138
+    },
+    {
+      "path": "mods/flowerymooblooms-fabric-3.0.3+mc1.21.11.jar",
+      "sha1": "3ee9e9de00d8add3c5d36dbf4641eaea40b03e48",
+      "size": 84129
+    },
+    {
+      "path": "mods/friendsandfoes-fabric-5.0.4+mc1.21.11.jar",
+      "sha1": "042cab179fbe689fe51936d5111f881998abe75b",
+      "size": 4387504
+    },
+    {
+      "path": "mods/geckolib-fabric-1.21.11-5.4.5.jar",
+      "sha1": "41cd2e142e48a8b6604d85764a6466fe5edb70c3",
+      "size": 822664
+    },
+    {
+      "path": "mods/ImmediatelyFast-Fabric-1.14.3+1.21.11.jar",
+      "sha1": "43e451464f979bdf9ff4ac288b358a2f91b79ed8",
+      "size": 302709
+    },
+    {
+      "path": "mods/Incendium_26.1_v5.4.12.jar",
+      "sha1": "74f78445b6da346eb08a9f730e86dc77925eed46",
+      "size": 4248954
+    },
+    {
+      "path": "mods/iris-fabric-1.10.8+mc1.21.11.jar",
+      "sha1": "acfbe6d065b6c35d85c14da04d35e073363f3acf",
+      "size": 2807718
+    },
+    {
+      "path": "mods/istoki-client.jar",
+      "sha1": "e166c9268fafc7705f471c1a3f297c3cbcaddc7d",
+      "size": 10155431
+    },
+    {
+      "path": "mods/istoki-menu.jar",
+      "sha1": "f6c32c86d6879054bf90206b72d88fac43fe2481",
+      "size": 134486
+    },
+    {
+      "path": "mods/Jade-1.21.11-Fabric-21.1.6.jar",
+      "sha1": "b48b23fe3b9175641bd63ce5c3373977f8f15723",
+      "size": 950484
+    },
+    {
+      "path": "mods/jei-1.21.11-fabric-27.48.0.106.jar",
+      "sha1": "64d19fcf2899a3042c701ba1ca15f2a63268c262",
+      "size": 2419982
+    },
+    {
+      "path": "mods/journeymap-fabric-1.21.11-6.0.0.jar",
+      "sha1": "901dbdf7e50605a53cb3d1232e625c445b428b08",
+      "size": 4193594
+    },
+    {
+      "path": "mods/lexiconfig-fabric-1.4.22-novel.jar",
+      "sha1": "d6010c61d88f7b22ec75fa21d10ca2d494bd2035",
+      "size": 278077
+    },
+    {
+      "path": "mods/lithium-fabric-0.21.4+mc1.21.11.jar",
+      "sha1": "203bdcb26e97b3217b045e1182651a7d7b6462ec",
+      "size": 900462
+    },
+    {
+      "path": "mods/lithostitched-1.7.2-fabric-21.11.jar",
+      "sha1": "d35f576f35115e406466fa426ec661a82b12e760",
+      "size": 813076
+    },
+    {
+      "path": "mods/lootr-fabric-1.21.11-1.20.34.104.jar",
+      "sha1": "4d6d935f87b0f269148cfe6079dbed332b9133b8",
+      "size": 1018314
+    },
+    {
+      "path": "mods/mezz_config-1.21.11-fabric-0.7.1.jar",
+      "sha1": "5b15d5b51cdfe52efc91bdcfbd2c6575f66725f1",
+      "size": 395155
+    },
+    {
+      "path": "mods/midnightlib-fabric-1.10.0+1.21.11.jar",
+      "sha1": "9d4ea7bb3432d8e1021f49daa408a37e04c76587",
+      "size": 64891
+    },
+    {
+      "path": "mods/modernfix-5.26.3-build.2.jar",
+      "sha1": "5a51d1a9768bbf9943e6eef83abf43d2b82baa30",
+      "size": 630900
+    },
+    {
+      "path": "mods/modmenu-17.0.1.jar",
+      "sha1": "d5612d70bda58e0179b177ca9990e57471e67d19",
+      "size": 960882
+    },
+    {
+      "path": "mods/moonstone_meteorites_v1.1.0_1.21.9+.jar",
+      "sha1": "23438a85d12e3806d68374c61de4e84da676527a",
+      "size": 10502924
+    },
+    {
+      "path": "mods/morechathistory-1.3.1.jar",
+      "sha1": "b4337ef9dc0a6cdf31d8f3df68a6542f64f3625e",
+      "size": 3573
+    },
+    {
+      "path": "mods/mru-1.0.26+edge+1.21.11-fabric.jar",
+      "sha1": "8b4d0803932c2edf6f521feb306bcd01a013a692",
+      "size": 94773
+    },
+    {
+      "path": "mods/netherportalfix-fabric-1.21.11-21.11.2.jar",
+      "sha1": "eafa6556784cd6a27b7bca48a846f445502a6519",
+      "size": 213274
+    },
+    {
+      "path": "mods/NoChatReports-FABRIC-1.21.11-v2.18.0.jar",
+      "sha1": "4e519507bdd81ce2520da33f497a5f12469f5b10",
+      "size": 245492
+    },
+    {
+      "path": "mods/noisium-fabric-2.8.3+mc1.21.11.jar",
+      "sha1": "2851c7824664bc970367f89710ffd569f49a761c",
+      "size": 225560
+    },
+    {
+      "path": "mods/Nullscape_1.21.x_v1.2.17.jar",
+      "sha1": "3841ae6220c3257cef8878ca7ed156a49ac5f5ff",
+      "size": 343959
+    },
+    {
+      "path": "mods/Oh-The-Biomes-Weve-Gone-Fabric-4.4.2.jar",
+      "sha1": "97ac49e9742c9411db138a89feaf951770e3bb79",
+      "size": 20681565
+    },
+    {
+      "path": "mods/Oh-The-Trees-Youll-Grow-fabric-1.21.11-9.1.3.jar",
+      "sha1": "681cb4b2fb51a0e4748bf277352f68dbd224289b",
+      "size": 171754
+    },
+    {
+      "path": "mods/Origins-Legacy-1.12.16+1.21.11.jar",
+      "sha1": "56a7e1a16e3ecca8f72687b42f4dc05bb4cb6328",
+      "size": 2785044
+    },
+    {
+      "path": "mods/owo-lib-0.13.0+1.21.11.jar",
+      "sha1": "5baf520ec1e69210ee430a8413a6493cc402764d",
+      "size": 2254955
+    },
+    {
+      "path": "mods/PatPat-1.3.1+1.21.11+fabric.jar",
+      "sha1": "f1b2bdfba247a1619ab43729c76243444d3b1fca",
+      "size": 1243367
+    },
+    {
+      "path": "mods/Ping-Wheel-1.12.1-fabric-1.21.11.jar",
+      "sha1": "a9b826a2f83e17246e003108500a70e0f3852a3d",
+      "size": 151484
+    },
+    {
+      "path": "mods/placeholder-api-2.8.2+1.21.10.jar",
+      "sha1": "bbdc920ecff993148cd6e81a208536132245ce40",
+      "size": 268662
+    },
+    {
+      "path": "mods/PlayerAnimationLibFabric-1.1.12+mc.1.21.11.jar",
+      "sha1": "c63665c9617c91cf38503b1b8abc1c32982632e1",
+      "size": 1134142
+    },
+    {
+      "path": "mods/polymer-bundled-0.15.2+1.21.11.jar",
+      "sha1": "d6fb4141f437d565bd9a6a218c0742f28a0bc5ba",
+      "size": 1485870
+    },
+    {
+      "path": "mods/progression-reborn-1.21.11-v1.7.18.jar",
+      "sha1": "daf8fff0b5d1bc4c17d0957490b38042b312d5d6",
+      "size": 1115902
+    },
+    {
+      "path": "mods/progressive-eyes-1.5.jar",
+      "sha1": "6ee136cba41088bd26f58c63599730eef005dc5b",
+      "size": 322547
+    },
+    {
+      "path": "mods/races.jar",
+      "sha1": "17ff0aac4288a82574a36083d3eebca96df0a050",
+      "size": 212320
+    },
+    {
+      "path": "mods/reeses-sodium-options-fabric-2.2.4+mc1.21.11.jar",
+      "sha1": "295623b7f0bd9ffb365e2364d7229b6ed1e2bedc",
+      "size": 258250
+    },
+    {
+      "path": "mods/repurposed_structures-7.6.2+1.21.11-fabric.jar",
+      "sha1": "dc88e4bea42a5e007eb5c2d0107271a43f1db363",
+      "size": 8200263
+    },
+    {
+      "path": "mods/ResourcefulLib-fabric-1.21.11-3.11.1.jar",
+      "sha1": "727d96855865e590d7c6fd4d49d80ab469892d26",
+      "size": 461107
+    },
+    {
+      "path": "mods/ScalableLux-0.1.6+fabric.c25518a-all.jar",
+      "sha1": "9df93ab6442fa374c17fab6b5181fe2c215d9d5b",
+      "size": 182846
+    },
+    {
+      "path": "mods/signed_paintings-1.2.10-mc1.21.11.jar",
+      "sha1": "c525fb785337e314a2805147a3a1ef5fa1943cf2",
+      "size": 130904
+    },
+    {
+      "path": "mods/simpleradio-fabric-1.21.11-4.6.7.10-port.jar",
+      "sha1": "d1283c2c3f5f5f7d2493d79062277669524e5dea",
+      "size": 1044975
+    },
+    {
+      "path": "mods/sodium-extra-fabric-0.9.5+mc1.21.11.jar",
+      "sha1": "131a81641152efd5feb90bdb643d82726ec1da89",
+      "size": 487570
+    },
+    {
+      "path": "mods/sodium-fabric-0.8.14+mc1.21.11.jar",
+      "sha1": "4a8733fe544168068d12fa94b2ab03e6c0c7bf91",
+      "size": 1909150
+    },
+    {
+      "path": "mods/sodium-fabric-0.8.15-beta.1+mc1.21.11.jar",
+      "sha1": "5469cef6f5dddd72a1216d9a15393c90d8eb5f33",
+      "size": 1914874
+    },
+    {
+      "path": "mods/sounds-2.4.23+edge+1.21.11-fabric.jar",
+      "sha1": "92d93ee8f82e58646ea8db925e010bdef2a2556c",
+      "size": 8134500
+    },
+    {
+      "path": "mods/spyglass_astronomy-1.0.20-mc1.21.11.jar",
+      "sha1": "b871bbc935373966ad693d65f79f45672265ccf1",
+      "size": 285109
+    },
+    {
+      "path": "mods/storagedelight-26.07.01-1.21.11-fabric.jar",
+      "sha1": "cea5d7a8c8ce1723a1fcbf56fd248f776f19fe18",
+      "size": 971361
+    },
+    {
+      "path": "mods/TerraBlender-fabric-1.21.11-21.11.0.0.jar",
+      "sha1": "e4bd1aee6bc8c56ae77647a06f31a3bd981962a6",
+      "size": 341308
+    },
+    {
+      "path": "mods/trade-cycling-fabric-1.21.11-1.0.23.jar",
+      "sha1": "3d8dd9c53a9e7aebedeb5f7b8e04e1918bfa3898",
+      "size": 599409
+    },
+    {
+      "path": "mods/trinkets-3.11.3.jar",
+      "sha1": "64bd38b2051397244ae28af844a6849c2fac4a79",
+      "size": 279981
+    },
+    {
+      "path": "mods/Vapeaholic-1.0.1+1.21.9.jar",
+      "sha1": "03d93518840dd8fd5ebf3e05b73bc57988c69c3e",
+      "size": 975138
+    },
+    {
+      "path": "mods/vinurl-2.6.0+mc1.21.11.jar",
+      "sha1": "a3f60efc2ad68ffae954648af7e6202392ce56a7",
+      "size": 199980
+    },
+    {
+      "path": "mods/VisibleTraders-0.1.3.1.jar",
+      "sha1": "ff132d76511982639ee82506c9c9c538515e0b81",
+      "size": 65218
+    },
+    {
+      "path": "mods/voicechat-fabric-1.21.11-2.6.27.jar",
+      "sha1": "44f9697b0cbbd66201dba295093cdb758cffc029",
+      "size": 5609606
+    },
+    {
+      "path": "mods/waystones-fabric-1.21.11-21.11.9.jar",
+      "sha1": "5b7c5a3348b0c2a436c9b679fd33d42653ada53f",
+      "size": 933036
+    },
+    {
+      "path": "mods/yet_another_config_lib_v3-3.8.2+1.21.11-fabric.jar",
+      "sha1": "f99cda70903f16dd6927a276150b2762b4d5ab66",
+      "size": 1126948
+    }
+  ]
+}
