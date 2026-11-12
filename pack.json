@@ -1,12 +1,12 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "Binary Barrier обновлён до 1.4.0.",
+  "changelog": "ОБНОВЛЕНИЕ БЫРЬЕРА",
   "files": [
     {
       "path": "mods/absolutrevive-v1.2.1b.jar",
@@ -39,9 +39,9 @@
       "size": 49603
     },
     {
-      "path": "mods/binary-barrier-1.4.0.jar",
-      "sha1": "0474e3b227582481318e99c7ff10a7188bedffc7",
-      "size": 158688
+      "path": "mods/binary-barrier-1.4.1.jar",
+      "sha1": "8218902686010e55bed5e09bbda661cfc0bc6faa",
+      "size": 161406
     },
     {
       "path": "mods/brewery-0.14.0+1.21.11-rc2.jar",
