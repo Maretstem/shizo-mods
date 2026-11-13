@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "Обновили оптимизацию клиента:3",
+  "changelog": "Обновили основной мод!",
   "history": [
+    {
+      "version": "1.0.10",
+      "date": "2026-11-13",
+      "changelog": "Обновили основной мод!"
+    },
     {
       "version": "1.0.9",
       "date": "2026-11-13",
@@ -273,9 +278,9 @@
     },
     {
       "path": "mods/istoki-client.jar",
-      "sha1": "449ea1806f9e6ba500af36bf2d7af61de68a6f24",
-      "size": 10194629,
-      "git": "a3a96c166df7181c27c15bff47e7d6ced117d759"
+      "sha1": "0fc942fa85243ce9aa445c0b8a282e7217c87fa0",
+      "size": 10228798,
+      "git": "4bbe80cc0310c331e3a96bd5610aafa37c698435"
     },
     {
       "path": "mods/istoki-menu.jar",
