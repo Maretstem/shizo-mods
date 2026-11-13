@@ -1,5 +1,5 @@
 // Страница панели. Имена файлов и любые чужие строки попадают в DOM только через textContent.
-import { canPush, client, loadState, modKey, nextVersion, publish } from './core.js';
+import { canPush, client, loadState, modKey, nextVersion, publishSafe } from './core.js?v=2';
 
 const $ = (s) => document.querySelector(s);
 const el = (tag, cls, text) => {
@@ -176,13 +176,14 @@ $('#pub').onclick = async () => {
   say('Публикую… не закрывай страницу.');
   try {
     const files = await Promise.all([...adds.values()].map(async (f) => ({ name: f.name, data: await f.arrayBuffer() })));
-    await publish(gh, state, { version, changelog: $('#notes').value, adds: files, removes: [...removes], onStep: step });
+    state = await loadState(gh); // свежее состояние прямо перед публикацией: страница могла быть открыта давно
+    const done = await publishSafe(gh, state, { version, changelog: $('#notes').value, adds: files, removes: [...removes], onStep: step });
     step('Готово');
     adds.clear();
     removes.clear();
     $('#notes').value = '';
-    waitFor = version;
-    say(`Отправлено. Жду, пока GitHub опубликует версию ${version} (1–6 минут)…`, 'warnc');
+    waitFor = done.pack.version;
+    say(`Отправлено. Жду, пока GitHub опубликует версию ${waitFor} (1–6 минут)…`, 'warnc');
     await load();
   } catch (e) {
     step(`✖ ${e.message}`);

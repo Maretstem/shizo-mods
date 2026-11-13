@@ -7,13 +7,13 @@ const ERRORS = {
   403: 'Нет прав или исчерпан лимит запросов GitHub — проверь, что тебя добавили в репозиторий, или подожди час',
   404: 'Нет доступа к репозиторию — владелец должен добавить тебя в Collaborators, а ты — принять приглашение',
   409: 'Репозиторий изменился, пока ты работал — обнови страницу и повтори',
-  422: 'Кто-то опубликовал сборку раньше тебя — обнови страницу и повтори',
 };
 
 export function client(token, base = 'https://api.github.com') {
   return async (path, { method = 'GET', body, raw } = {}) => {
     const res = await fetch(`${base}/repos/${REPO}${path}`, {
       method,
+      cache: 'no-store', // GitHub разрешает браузеру минуту помнить ответ — панель видела бы вчерашний день
       headers: {
         Accept: raw ? 'application/vnd.github.raw+json' : 'application/vnd.github+json',
         ...(token && { Authorization: `Bearer ${token}` }),
@@ -21,7 +21,10 @@ export function client(token, base = 'https://api.github.com') {
       },
       body: body && JSON.stringify(body),
     });
-    if (!res.ok) throw Object.assign(new Error(ERRORS[res.status] ?? `GitHub ответил ошибкой ${res.status}`), { status: res.status });
+    if (!res.ok) {
+      const detail = (await res.json().catch(() => ({}))).message;
+      throw Object.assign(new Error(ERRORS[res.status] ?? `GitHub ответил ошибкой ${res.status}${detail ? `: ${detail}` : ''}`), { status: res.status });
+    }
     return raw ? res.arrayBuffer() : res.json();
   };
 }
@@ -112,10 +115,34 @@ export async function publish(gh, state, { version, changelog = '', adds = [], r
   const newTree = (await gh('/git/trees', { method: 'POST', body: { base_tree: state.treeSha, tree } })).sha;
   const commit = (await gh('/git/commits', { method: 'POST', body: { message: `Сборка ${version}`, tree: newTree, parents: [state.head] } })).sha;
   onStep('Публикую');
-  await gh('/git/refs/heads/main', { method: 'PATCH', body: { sha: commit } }); // без force: если кто-то успел раньше — честная ошибка
+  // Без force: если другой админ успел раньше, GitHub откажет — publishSafe пересоберёт поверх его версии
+  await gh('/git/refs/heads/main', { method: 'PATCH', body: { sha: commit } }).catch((e) => {
+    throw e.status === 422 ? Object.assign(new Error('Кто-то опубликовал сборку раньше тебя'), { conflict: true }) : e;
+  });
   await gh('/git/refs/heads/gh-pages', { method: 'PATCH', body: { sha: commit, force: true } }).catch((e) => {
     if (e.status !== 404 && e.status !== 422) throw e;
     return gh('/git/refs', { method: 'POST', body: { ref: 'refs/heads/gh-pages', sha: commit } });
   });
   return pack;
+}
+
+// Публикация, которая переживает одновременную работу двух админов: если ветка успела уйти вперёд,
+// берём свежее состояние и накладываем те же добавления и удаления поверх чужой версии.
+// Занятый номер версии заменяется следующим свободным. Возвращает { pack, state } — что в итоге опубликовано.
+export async function publishSafe(gh, state, opts) {
+  const onStep = opts.onStep ?? (() => {});
+  for (let attempt = 1; ; attempt++) {
+    const taken = state.pack.version;
+    if (taken === opts.version || (state.pack.history ?? []).some((h) => h.version === opts.version)) {
+      opts = { ...opts, version: nextVersion(taken) };
+      onStep(`Номер уже занят другим админом, выпускаю как ${opts.version}`);
+    }
+    try {
+      return { pack: await publish(gh, state, opts), state };
+    } catch (e) {
+      if (!e.conflict || attempt >= 3) throw e;
+      onStep('Другой админ опубликовал сборку секунду назад — собираю поверх его версии');
+      state = await loadState(gh);
+    }
+  }
 }
