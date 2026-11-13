@@ -1,12 +1,12 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "Токи тут ыыыыыыы",
+  "changelog": "Готовимся к ОБТ!",
   "files": [
     {
       "path": "mods/absolutrevive-v1.2.1b.jar",
