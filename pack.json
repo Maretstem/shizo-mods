@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "Обновили основной мод!",
+  "changelog": "обновление барьера",
   "history": [
+    {
+      "version": "1.0.11",
+      "date": "2026-11-13",
+      "changelog": "обновление барьера"
+    },
     {
       "version": "1.0.10",
       "date": "2026-11-13",
@@ -97,10 +102,10 @@
       "git": "53bb4274a50fb8489ac8e0f7aaebca2a30267d78"
     },
     {
-      "path": "mods/binary-barrier-1.4.1.jar",
-      "sha1": "8218902686010e55bed5e09bbda661cfc0bc6faa",
-      "size": 161406,
-      "git": "70ad2272d7de052650d8d90429c9cdc6f4b1c0de"
+      "path": "mods/binary-barrier-1.5.0.jar",
+      "sha1": "2ae21776f1e9559671aa3d160b0e1ff54e3e79bb",
+      "size": 166889,
+      "git": "796b450ed160f07e07497280aeae4fed7c3da153"
     },
     {
       "path": "mods/brewery-0.14.0+1.21.11-rc2.jar",
