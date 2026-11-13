@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "Готовимся к ОБТ!",
+  "changelog": "Обновили оптимизацию клиента:3",
   "history": [
+    {
+      "version": "1.0.9",
+      "date": "2026-11-13",
+      "changelog": "Обновили оптимизацию клиента:3"
+    },
     {
       "version": "1.0.8",
       "date": "2026-11-13",
@@ -465,6 +470,12 @@
       "git": "e7e0053618d86be41b00f4314acdcc2aff5bfdf5"
     },
     {
+      "path": "mods/reeses-sodium-options-fabric-2.2.6-beta.1+mc1.21.11.jar",
+      "sha1": "7acb4b9b849df630f2820f8992dc194c0dba0592",
+      "size": 265217,
+      "git": "2caf473dac2c1ba7f0391d9fb217545f1aa43f19"
+    },
+    {
       "path": "mods/repurposed_structures-7.6.2+1.21.11-fabric.jar",
       "sha1": "dc88e4bea42a5e007eb5c2d0107271a43f1db363",
       "size": 8200263,
@@ -499,6 +510,12 @@
       "sha1": "131a81641152efd5feb90bdb643d82726ec1da89",
       "size": 487570,
       "git": "c826e3f80414133ffdabf2077586da290eda593d"
+    },
+    {
+      "path": "mods/sodium-extra-fabric-0.9.6-beta.1+mc1.21.11.jar",
+      "sha1": "7c4eba5bf7bb9ad6f3915d73a5473eb65139d3d3",
+      "size": 487575,
+      "git": "0515db74921d8e42a2a37f9bef29b1907dd5a094"
     },
     {
       "path": "mods/sodium-fabric-0.8.15-beta.1+mc1.21.11.jar",
