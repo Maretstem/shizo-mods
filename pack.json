@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "хз что писать",
+  "changelog": "Добавили новый функционал для лошадей!",
   "history": [
+    {
+      "version": "1.0.13",
+      "date": "2026-11-13",
+      "changelog": "Добавили новый функционал для лошадей!"
+    },
     {
       "version": "1.0.12",
       "date": "2026-11-13",
@@ -269,6 +274,12 @@
       "git": "5bdaa3eabe06a441011e91b52c22f1816c15a357"
     },
     {
+      "path": "mods/icys-better-horses-2.1.8-fab-1.21.11.jar",
+      "sha1": "b8c23f6d4b0b0f75e3a5453507c56b392f2bac30",
+      "size": 3850158,
+      "git": "584a43f23e9c9b8297a7c3e7242ae43dca401364"
+    },
+    {
       "path": "mods/ImmediatelyFast-Fabric-1.14.3+1.21.11.jar",
       "sha1": "43e451464f979bdf9ff4ac288b358a2f91b79ed8",
       "size": 302709,
@@ -363,6 +374,12 @@
       "sha1": "d5612d70bda58e0179b177ca9990e57471e67d19",
       "size": 960882,
       "git": "acc6165d7acc133d4ad696a8e22cd3c4dfffa053"
+    },
+    {
+      "path": "mods/modonomicon-1.21.11-fabric-1.121.0.jar",
+      "sha1": "d025828524ac69a9812d024d0b2158ff7a891f7c",
+      "size": 2593799,
+      "git": "0870cb656a25b7684958a03f646c73c1bf93be7f"
     },
     {
       "path": "mods/moonstone_meteorites_v1.1.0_1.21.9+.jar",
