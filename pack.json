@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "фикс запуска",
+  "changelog": "исправление отображение меток",
   "history": [
+    {
+      "version": "1.0.16",
+      "date": "2026-11-14",
+      "changelog": "исправление отображение меток"
+    },
     {
       "version": "1.0.15",
       "date": "2026-11-13",
@@ -228,12 +233,6 @@
       "sha1": "ce2e1cf7e343a625d184c80ccea582d468686a2e",
       "size": 1529094,
       "git": "37633da9ea6384bb821b335f932d193abfc559f3"
-    },
-    {
-      "path": "mods/exordium-fabric-2.1.1-mc1.21.11.jar",
-      "sha1": "5aab4395e5d501ee9b578162fcf643352685fc4c",
-      "size": 1607496,
-      "git": "6dceb6838324fdde0e242e75b02acc80a0bf21b3"
     },
     {
       "path": "mods/fabric-api-0.141.6+1.21.11.jar",
