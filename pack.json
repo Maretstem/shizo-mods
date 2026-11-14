@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "исправление отображение меток",
+  "changelog": "обнова ради обновы",
   "history": [
+    {
+      "version": "1.0.17",
+      "date": "2026-11-14",
+      "changelog": "обнова ради обновы"
+    },
     {
       "version": "1.0.16",
       "date": "2026-11-14",
@@ -331,10 +336,10 @@
       "git": "5dd866cffc0b76dbc98f9c666eb47b4c64947c0a"
     },
     {
-      "path": "mods/istoki-client.jar",
-      "sha1": "0fc942fa85243ce9aa445c0b8a282e7217c87fa0",
-      "size": 10228798,
-      "git": "4bbe80cc0310c331e3a96bd5610aafa37c698435"
+      "path": "mods/istoki-client-2.21.0.jar",
+      "sha1": "32db76f760415b39d22a63b06a75078abf6f450c",
+      "size": 10247042,
+      "git": "1be48fe98f790ccbae200f0f8745009805daa4f7"
     },
     {
       "path": "mods/istoki-menu.jar",
