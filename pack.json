@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "обновление оптимизации",
+  "changelog": "фикс запуска",
   "history": [
+    {
+      "version": "1.0.15",
+      "date": "2026-11-13",
+      "changelog": "фикс запуска"
+    },
     {
       "version": "1.0.14",
       "date": "2026-11-13",
@@ -181,12 +186,6 @@
       "sha1": "523b53ebb6142080b1ab9971ac6042cd25215572",
       "size": 685864,
       "git": "a3f020a534570a7b7c941677c98a6df042446b97"
-    },
-    {
-      "path": "mods/cull-fewer-leaves-1.1.2+1.21.11-fabric.jar",
-      "sha1": "de9ddf108622b1b517f575dff5d7ebbd152cf47b",
-      "size": 410006,
-      "git": "b9afe4062e01e823adbd15dff8c27bb573107943"
     },
     {
       "path": "mods/CustomSkinLoader_Universal-15.1.jar",
