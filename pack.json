@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "обнова ради обновы",
+  "changelog": "чикенбурбер",
   "history": [
+    {
+      "version": "1.0.18",
+      "date": "2026-11-15",
+      "changelog": "чикенбурбер"
+    },
     {
       "version": "1.0.17",
       "date": "2026-11-14",
@@ -336,10 +341,10 @@
       "git": "5dd866cffc0b76dbc98f9c666eb47b4c64947c0a"
     },
     {
-      "path": "mods/istoki-client-2.21.0.jar",
-      "sha1": "32db76f760415b39d22a63b06a75078abf6f450c",
-      "size": 10247042,
-      "git": "1be48fe98f790ccbae200f0f8745009805daa4f7"
+      "path": "mods/istoki-client-2.21.1.jar",
+      "sha1": "093be532f153dabf9a8be2132974353970ba3feb",
+      "size": 10251745,
+      "git": "98d27dc91a5acd62d8676b66ab2707e705842859"
     },
     {
       "path": "mods/istoki-menu.jar",
