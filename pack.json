@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "",
+  "changelog": "новый босс",
   "history": [
+    {
+      "version": "1.0.21",
+      "date": "2026-11-15",
+      "changelog": "новый босс"
+    },
     {
       "version": "1.0.20",
       "date": "2026-11-15",
@@ -211,6 +216,12 @@
       "sha1": "523b53ebb6142080b1ab9971ac6042cd25215572",
       "size": 685864,
       "git": "a3f020a534570a7b7c941677c98a6df042446b97"
+    },
+    {
+      "path": "mods/crystal_eye-1.0.0-client.jar",
+      "sha1": "233a430f9d1df09b6171568ce17d46d278452767",
+      "size": 4155436,
+      "git": "f9f14705839ba888c14050aa1034be33e5e2eaa3"
     },
     {
       "path": "mods/CustomSkinLoader_Universal-15.1.jar",
