@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "чикенбурбер",
+  "changelog": "",
   "history": [
+    {
+      "version": "1.0.19",
+      "date": "2026-11-15",
+      "changelog": ""
+    },
     {
       "version": "1.0.18",
       "date": "2026-11-15",
@@ -561,12 +566,6 @@
       "sha1": "6ee136cba41088bd26f58c63599730eef005dc5b",
       "size": 322547,
       "git": "e32e284f5c6b23f6ca9a3618d147836e3ba5045d"
-    },
-    {
-      "path": "mods/races.jar",
-      "sha1": "17ff0aac4288a82574a36083d3eebca96df0a050",
-      "size": 212320,
-      "git": "0713cf8d1b5eb5ce61895f9a8225777380454f46"
     },
     {
       "path": "mods/reeses-sodium-options-fabric-2.2.6-beta.1+mc1.21.11.jar",
