@@ -1,5 +1,5 @@
 // Страница панели. Имена файлов и любые чужие строки попадают в DOM только через textContent.
-import { canPush, client, loadState, modKey, nextVersion, publishSafe } from './core.js?v=3';
+import { canPush, client, DEV_TAGS, loadDevlog, loadState, mediaExt, modKey, nextVersion, publishDevlog, publishSafe } from './core.js?v=4';
 
 const $ = (s) => document.querySelector(s);
 const el = (tag, cls, text) => {
@@ -29,6 +29,8 @@ let live = null; // версия, которую сейчас отдаёт са�
 const adds = new Map(); // имя -> File, добавятся при публикации
 const removes = new Set(); // 'mods/x.jar', удалятся при публикации
 let waitFor = null;
+const media = []; // { file, url } — картинки и видео нового поста «Разработки»
+let posts = []; // опубликованные посты
 
 $('#mk').href = 'https://github.com/settings/tokens/new?scopes=public_repo&description=SHIZOSTAN%20panel';
 
@@ -125,6 +127,8 @@ function showAuth() {
   $('#login').hidden = !!token;
   $('#logout').hidden = !token;
   $('#pub').disabled = !token;
+  $('#dpub').disabled = !token;
+  drawPosts();
   if (!token) say('Чтобы публиковать, войди ключом GitHub (блок наверху).');
 }
 
@@ -162,7 +166,7 @@ for (const ev of ['dragenter', 'dragover']) addEventListener(ev, (e) => (e.preve
 for (const ev of ['dragleave', 'drop']) addEventListener(ev, (e) => (e.preventDefault(), drop.classList.remove('over')));
 addEventListener('drop', (e) => add([...e.dataTransfer.files]));
 $('#find').oninput = draw;
-addEventListener('beforeunload', (e) => (adds.size || removes.size) && e.preventDefault()); // не потерять неопубликованное
+addEventListener('beforeunload', (e) => (adds.size || removes.size || media.length) && e.preventDefault()); // не потерять неопубликованное
 
 $('#pub').onclick = async () => {
   const version = $('#ver').value.trim();
@@ -193,6 +197,99 @@ $('#pub').onclick = async () => {
   $('#pub').disabled = !token;
 };
 
+// ---------- посты для вкладки «Разработка» ----------
+const dsay = (text, cls = 'm') => {
+  $('#dstatus').className = `${cls} grow`;
+  $('#dstatus').textContent = text;
+};
+
+function drawMedia() {
+  const list = $('#dmedia');
+  list.replaceChildren();
+  media.forEach((m, n) => {
+    const li = el('li');
+    li.title = `${m.file.name} · ${mb(m.file.size)}`;
+    const preview = m.file.type.startsWith('video/') ? Object.assign(el('video'), { muted: true, loop: true, autoplay: true }) : el('img');
+    preview.src = m.url;
+    const x = el('button', 'x del', '✕');
+    x.setAttribute('aria-label', `Убрать ${m.file.name}`);
+    x.onclick = () => (URL.revokeObjectURL(m.url), media.splice(n, 1), drawMedia());
+    li.append(preview, x);
+    list.append(li);
+  });
+}
+
+function addMedia(files) {
+  for (const f of files) {
+    if (!mediaExt(f.name)) dsay(`${f.name}: подходят PNG, JPG, GIF, WebP, MP4 и WebM`, 'badc');
+    else if (media.length >= 10) dsay('Не больше 10 файлов в одном посте', 'badc');
+    else media.push({ file: f, url: URL.createObjectURL(f) });
+  }
+  drawMedia();
+}
+
+function drawPosts() {
+  const list = $('#dposts');
+  list.replaceChildren();
+  if (!posts.length) list.append(el('li', 'm', 'Постов пока нет.'));
+  for (const p of posts) {
+    const li = el('li');
+    li.append(el('span', `tag ${p.tag}`, DEV_TAGS[p.tag] ?? p.tag), el('span', 'n', p.title), el('span', 'm', new Date(p.date).toLocaleDateString('ru')));
+    if (token) {
+      const del = el('button', 'x del', 'Удалить');
+      del.setAttribute('aria-label', `Удалить пост ${p.title}`);
+      del.onclick = async () => {
+        if (!confirm(`Удалить пост «${p.title}» вместе с его картинками?`)) return;
+        del.disabled = true;
+        try {
+          posts = await publishDevlog(gh, { removeId: p.id, onStep: dsay });
+          dsay('Пост удалён. Из лаунчера пропадёт через 1–6 минут.', 'okc');
+        } catch (e) {
+          dsay(e.message, 'badc');
+        }
+        drawPosts();
+      };
+      li.append(del);
+    }
+    list.append(li);
+  }
+}
+
+const ddrop = $('#ddrop');
+ddrop.onclick = () => $('#dpick').click();
+ddrop.onkeydown = (e) => (e.key === 'Enter' || e.key === ' ') && $('#dpick').click();
+$('#dpick').onchange = (e) => (addMedia([...e.target.files]), (e.target.value = ''));
+// Свой обработчик и stopPropagation: иначе общий «перетащи .jar» на странице примет картинку за мод
+ddrop.addEventListener('dragover', (e) => (e.preventDefault(), e.stopPropagation(), ddrop.classList.add('over')));
+ddrop.addEventListener('dragleave', () => ddrop.classList.remove('over'));
+ddrop.addEventListener('drop', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  ddrop.classList.remove('over');
+  drop.classList.remove('over');
+  addMedia([...e.dataTransfer.files]);
+});
+
+$('#dpub').onclick = async () => {
+  $('#dpub').disabled = true;
+  dsay('Публикую… не закрывай страницу.');
+  try {
+    const files = await Promise.all(media.map(async (m) => ({ name: m.file.name, data: await m.file.arrayBuffer() })));
+    posts = await publishDevlog(gh, { post: { title: $('#dtitle').value, tag: $('#dtag').value, text: $('#dtext').value }, media: files, onStep: dsay });
+    for (const m of media) URL.revokeObjectURL(m.url);
+    media.length = 0;
+    $('#dtitle').value = '';
+    $('#dtext').value = '';
+    drawMedia();
+    drawPosts();
+    dsay('Пост опубликован. В лаунчере появится через 1–6 минут, пока GitHub обновляет сайт.', 'okc');
+  } catch (e) {
+    dsay(e.message, 'badc');
+  }
+  $('#dpub').disabled = !token;
+};
+
 showAuth();
 load().catch((e) => say(e.message, 'badc'));
+loadDevlog(gh).then((d) => ((posts = d.posts), drawPosts()), () => {});
 setInterval(() => checkLive().catch(() => {}), 20000);

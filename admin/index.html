@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; connect-src 'self' https://api.github.com; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; connect-src 'self' https://api.github.com; img-src 'self' blob:; media-src 'self' blob:; base-uri 'none'; form-action 'none'">
 <title>Сборка SHIZOSTAN</title>
 <style>
 :root{--t:#f5f0fb;--m:#a99fbd;--g:rgba(255,255,255,.06);--l:rgba(255,255,255,.1);--pink:#f03fd0;--ok:#5fe39a;--warn:#ffc457;--bad:#ff6b81;color-scheme:dark}
@@ -20,7 +20,7 @@ button{font:inherit;color:inherit;cursor:pointer;border:1px solid var(--l);backg
 button:hover:not(:disabled){background:rgba(255,255,255,.18)}button:disabled{opacity:.5;cursor:default}
 button.go{background:linear-gradient(180deg,#f346d6,#a046f5);border:0;padding:13px 26px;font-size:16px}
 button.x{padding:5px 11px}button.del{color:var(--bad)}
-input,textarea{font:inherit;color:inherit;width:100%;background:rgba(8,5,20,.5);border:1px solid var(--l);border-radius:11px;padding:10px 13px}
+input,textarea,select{font:inherit;color:inherit;width:100%;background:rgba(8,5,20,.5);border:1px solid var(--l);border-radius:11px;padding:10px 13px}
 :focus-visible{outline:2px solid var(--pink);outline-offset:2px}
 label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:13px;color:var(--m)}
 ol{margin:0;padding-left:20px;color:var(--m)}ol b{color:var(--t)}
@@ -36,6 +36,10 @@ li.off .n{text-decoration:line-through;color:var(--m)}
 pre{margin:0;white-space:pre-wrap;word-break:break-word;font:13px/1.6 Consolas,monospace;background:rgba(8,5,20,.5);border-radius:12px;padding:14px}
 .okc{color:var(--ok)}.badc{color:var(--bad)}.warnc{color:var(--warn)}
 [hidden]{display:none!important}
+#ddrop{border:2px dashed var(--l);border-radius:16px;padding:20px;text-align:center;cursor:pointer}#ddrop.over{border-color:var(--pink);background:rgba(240,63,208,.12)}
+#dmedia{display:flex;gap:10px;flex-wrap:wrap;max-height:none}#dmedia li{position:relative;width:120px}#dmedia img,#dmedia video{width:120px;height:80px;object-fit:cover;border-radius:10px;display:block;background:rgba(8,5,20,.5)}#dmedia button{position:absolute;top:4px;right:4px;padding:2px 8px}
+#dposts li{display:flex;gap:10px;align-items:center;padding:8px 2px;border-top:1px solid var(--l)}#dposts li:first-child{border:0}
+.tag.dev{background:rgba(155,69,245,.22);color:#d7b8ff}.tag.event{background:rgba(255,196,87,.18);color:var(--warn)}.tag.update{background:rgba(95,227,154,.18);color:var(--ok)}
 </style>
 </head>
 <body>
@@ -82,7 +86,20 @@ pre{margin:0;white-space:pre-wrap;word-break:break-word;font:13px/1.6 Consolas,m
     <div class="row"><button id="pub" class="go">Опубликовать</button><span id="status" class="m grow" role="status"></span></div>
     <pre id="out" hidden></pre>
   </section>
+<section class="card">
+    <h2>Разработка — пост для лаунчера</h2>
+    <p class="m">Превью будущих обновлений, ивенты, новости. Появится во вкладке «Разработка», игрокам придёт уведомление. Версию сборки не меняет.</p>
+    <label>Заголовок<input id="dtitle" maxlength="120" autocomplete="off" placeholder="Например: Новый биом — Кристальные пещеры"></label>
+    <label>Тип<select id="dtag"><option value="dev">Разработка</option><option value="event">Ивент</option><option value="update">Обновление</option></select></label>
+    <label>Текст<textarea id="dtext" rows="5" placeholder="Что готовим, когда выйдет, что изменится"></textarea></label>
+    <div id="ddrop" tabindex="0" role="button">Перетащи сюда <b>картинки, GIF или видео</b> или нажми, чтобы выбрать<br><span class="m">PNG, JPG, GIF, WebP, MP4, WebM — до 25 МБ каждый, до 10 штук. Первая станет обложкой.</span></div>
+    <input id="dpick" type="file" accept=".png,.jpg,.jpeg,.gif,.webp,.mp4,.webm" multiple hidden>
+    <ul id="dmedia"></ul>
+    <div class="row"><button id="dpub" class="go">Опубликовать пост</button><span id="dstatus" class="m grow" role="status"></span></div>
+    <h2>Опубликованные посты</h2>
+    <ul id="dposts"></ul>
+  </section>
 </main>
-<script type="module" src="ui.js?v=3"></script>
+<script type="module" src="ui.js?v=4"></script>
 </body>
 </html>

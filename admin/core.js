@@ -117,15 +117,92 @@ export async function publish(gh, state, { version, changelog = '', news = '', a
   const newTree = (await gh('/git/trees', { method: 'POST', body: { base_tree: state.treeSha, tree } })).sha;
   const commit = (await gh('/git/commits', { method: 'POST', body: { message: `Сборка ${version}`, tree: newTree, parents: [state.head] } })).sha;
   onStep('Публикую');
-  // Без force: если другой админ успел раньше, GitHub откажет — publishSafe пересоберёт поверх его версии
+  await pushBranches(gh, commit);
+  return pack;
+}
+
+// main без force: если другой админ успел раньше, GitHub откажет — вызывающий пересоберёт поверх его версии.
+// gh-pages (с неё раздаёт сайт) просто ставится на тот же коммит.
+async function pushBranches(gh, commit) {
   await gh('/git/refs/heads/main', { method: 'PATCH', body: { sha: commit } }).catch((e) => {
-    throw e.status === 422 ? Object.assign(new Error('Кто-то опубликовал сборку раньше тебя'), { conflict: true }) : e;
+    throw e.status === 422 ? Object.assign(new Error('Кто-то опубликовал изменения раньше тебя'), { conflict: true }) : e;
   });
   await gh('/git/refs/heads/gh-pages', { method: 'PATCH', body: { sha: commit, force: true } }).catch((e) => {
     if (e.status !== 404 && e.status !== 422) throw e;
     return gh('/git/refs', { method: 'POST', body: { ref: 'refs/heads/gh-pages', sha: commit } });
   });
-  return pack;
+}
+
+// ---------- вкладка «Разработка» в лаунчере: devlog.json + картинки, GIF и видео в папке devlog/ ----------
+export const DEV_TAGS = { dev: 'Разработка', event: 'Ивент', update: 'Обновление' };
+const MEDIA = { png: 'image', jpg: 'image', jpeg: 'image', gif: 'image', webp: 'image', mp4: 'video', webm: 'video' };
+const MAX_MEDIA = 25 * 1024 * 1024; // большие GIF и видео игроки будут грузить долго
+export const mediaExt = (name) => {
+  const ext = name.toLowerCase().split('.').pop();
+  return MEDIA[ext] ? ext : null;
+};
+
+export async function loadDevlog(gh) {
+  const head = (await gh('/git/ref/heads/main')).object.sha;
+  const treeSha = (await gh(`/git/commits/${head}`)).tree.sha;
+  const tree = await gh(`/git/trees/${treeSha}?recursive=1`);
+  const blob = tree.tree.find((e) => e.path === 'devlog.json');
+  const devlog = blob ? JSON.parse(new TextDecoder().decode(await gh(`/git/blobs/${blob.sha}`, { raw: true }))) : { posts: [] };
+  return { head, treeSha, paths: new Set(tree.tree.map((e) => e.path)), posts: Array.isArray(devlog.posts) ? devlog.posts : [] };
+}
+
+// post: { title, tag, text } + media: [{ name, data: ArrayBuffer }] — новый пост; removeId — удалить пост вместе с его файлами.
+// Версию сборки не трогает. Если другой админ публиковал одновременно — берёт свежее состояние и повторяет.
+export async function publishDevlog(gh, { post, media = [], removeId, onStep = () => {}, now = new Date() }) {
+  let fresh;
+  if (post) {
+    const title = String(post.title ?? '').trim();
+    if (!title) throw new Error('Напиши заголовок поста');
+    if (title.length > 120) throw new Error('Заголовок длиннее 120 символов');
+    if (!DEV_TAGS[post.tag]) throw new Error('Неизвестный тип поста');
+    if (media.length > 10) throw new Error('Не больше 10 картинок и видео в одном посте');
+    for (const m of media) {
+      if (!mediaExt(m.name)) throw new Error(`${m.name}: подходят PNG, JPG, GIF, WebP, MP4 и WebM`);
+      if (m.data.byteLength > MAX_MEDIA) throw new Error(`${m.name}: больше 25 МБ — сожми или обрежь`);
+    }
+    const id = now.getTime().toString(36);
+    // Файлы загружаются один раз, даже если публикацию придётся повторить
+    const files = [];
+    for (const [n, m] of media.entries()) {
+      onStep(`Загружаю ${m.name}`);
+      const ext = mediaExt(m.name);
+      files.push({ path: `devlog/${id}-${n}.${ext}`, type: MEDIA[ext], sha: (await gh('/git/blobs', { method: 'POST', body: { content: base64(m.data), encoding: 'base64' } })).sha });
+    }
+    fresh = { id, date: now.toISOString(), title, tag: post.tag, text: String(post.text ?? '').trim().slice(0, 5000), media: files.map((f) => ({ src: f.path, type: f.type })), files };
+  }
+  for (let attempt = 1; ; attempt++) {
+    const s = await loadDevlog(gh);
+    const tree = [];
+    let posts = s.posts.filter((p) => p.id !== removeId);
+    if (fresh) {
+      const { files, ...p } = fresh;
+      posts = [p, ...posts];
+      for (const f of files) tree.push({ path: f.path, mode: '100644', type: 'blob', sha: f.sha });
+    }
+    const kept = posts.slice(0, 50); // старые посты уходят вместе с файлами
+    const keptIds = new Set(kept.map((p) => p.id));
+    for (const p of s.posts.filter((x) => !keptIds.has(x.id))) {
+      for (const m of p.media ?? []) if (s.paths.has(m.src)) tree.push({ path: m.src, mode: '100644', type: 'blob', sha: null });
+    }
+    tree.push({ path: 'devlog.json', mode: '100644', type: 'blob', content: JSON.stringify({ posts: kept }, null, 2) + '\n' });
+    onStep('Сохраняю');
+    const newTree = (await gh('/git/trees', { method: 'POST', body: { base_tree: s.treeSha, tree } })).sha;
+    const message = fresh ? `Разработка: ${fresh.title}` : `Разработка: удалён пост ${removeId}`;
+    const commit = (await gh('/git/commits', { method: 'POST', body: { message, tree: newTree, parents: [s.head] } })).sha;
+    onStep('Публикую');
+    try {
+      await pushBranches(gh, commit);
+      return kept;
+    } catch (e) {
+      if (!e.conflict || attempt >= 3) throw e;
+      onStep('Кто-то публиковал одновременно — повторяю поверх свежей версии');
+    }
+  }
 }
 
 // Публикация, которая переживает одновременную работу двух админов: если ветка успела уйти вперёд,
