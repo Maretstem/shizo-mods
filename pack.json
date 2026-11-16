@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "новый мод на 3д модельки",
+  "changelog": "",
   "history": [
+    {
+      "version": "1.0.28",
+      "date": "2026-11-16",
+      "changelog": ""
+    },
     {
       "version": "1.0.27",
       "date": "2026-11-16",
@@ -249,9 +254,9 @@
     },
     {
       "path": "mods/cpm-offline-bridge-1.0.0.jar",
-      "sha1": "e6d18e30b4d27c503484355e198d8e8ab9afd3a8",
-      "size": 24394,
-      "git": "cb4d11caf83f38700bca3ccb6a886b0fa770effe"
+      "sha1": "9e7bbc4151813ae7d8fd212f6dfafa3fa5049562",
+      "size": 24389,
+      "git": "beaf7b2f231f2418d306b5e05111a77fa278ca4d"
     },
     {
       "path": "mods/crystal_eye-1.0.0-client.jar",
