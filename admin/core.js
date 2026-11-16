@@ -70,7 +70,7 @@ export async function loadState(gh) {
 
 // adds: [{ name, data: ArrayBuffer }] — новые моды; removes: ['mods/x.jar'] — пути внутри сборки.
 // Один коммит: файлы + пересчитанный pack.json, затем обе ветки (main и gh-pages, с которой раздаёт сайт).
-export async function publish(gh, state, { version, changelog = '', adds = [], removes = [], onStep = () => {} }) {
+export async function publish(gh, state, { version, changelog = '', news = '', adds = [], removes = [], onStep = () => {} }) {
   version = String(version ?? '').trim();
   if (!/^[\w.+-]{1,32}$/.test(version)) throw new Error('Версия: цифры, буквы и точки, например 1.0.6');
   if (version === state.pack.version) throw new Error(`Версия ${version} уже выпущена — поставь новый номер, иначе лаунчеры не заметят обновление`);
@@ -106,6 +106,8 @@ export async function publish(gh, state, { version, changelog = '', adds = [], r
     version,
     changelog: String(changelog).trim(),
     // История для блока «Что нового» в лаунчере (то же правило, что в tools/make-pack.mjs)
+    // Новость на главной лаунчера: необязательна, хранятся последние 10
+    news: news.trim() ? [{ date: new Date().toISOString().slice(0, 10), text: news.trim() }, ...(state.pack.news ?? [])].slice(0, 10) : state.pack.news ?? [],
     history: [{ version, date: new Date().toISOString().slice(0, 10), changelog: String(changelog).trim() }, ...(state.pack.history ?? []).filter((h) => h.version !== version)].slice(0, 30),
     files: entries.sort((a, b) => a.path.localeCompare(b.path)).map((f) => (keepsUserEdits(f.path) ? { ...f, overwrite: false } : f)),
   };
