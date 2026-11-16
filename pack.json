@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "иди нахуй око",
+  "changelog": "обновление итостоков",
   "history": [
+    {
+      "version": "1.0.23",
+      "date": "2026-11-16",
+      "changelog": "обновление итостоков"
+    },
     {
       "version": "1.0.22",
       "date": "2026-11-15",
@@ -361,10 +366,10 @@
       "git": "5dd866cffc0b76dbc98f9c666eb47b4c64947c0a"
     },
     {
-      "path": "mods/istoki-client-2.21.1.jar",
-      "sha1": "093be532f153dabf9a8be2132974353970ba3feb",
-      "size": 10251745,
-      "git": "98d27dc91a5acd62d8676b66ab2707e705842859"
+      "path": "mods/istoki-client-2.22.0.jar",
+      "sha1": "a72bd8c313fc1f5112fd0a6665308f7b589c6e50",
+      "size": 10277344,
+      "git": "4e97375b2c795d8efe55eb11f097103799a5230c"
     },
     {
       "path": "mods/istoki-menu.jar",
@@ -584,9 +589,9 @@
     },
     {
       "path": "mods/races.jar",
-      "sha1": "4cdac7c563a35733574f5d0d6977f06997bf7fba",
-      "size": 212251,
-      "git": "6aee51a1a8a75aa6e7fc9ce9a1fbcb57a8a731c6"
+      "sha1": "120f4073589c7d4eb182352d707286d494420dd0",
+      "size": 212257,
+      "git": "79d576fc9028365966f6e64be1579ba0fab6e1d4"
     },
     {
       "path": "mods/reeses-sodium-options-fabric-2.2.6-beta.1+mc1.21.11.jar",
