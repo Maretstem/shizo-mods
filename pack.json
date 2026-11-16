@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "",
+  "changelog": "- сортировка",
   "history": [
+    {
+      "version": "1.0.26",
+      "date": "2026-11-16",
+      "changelog": "- сортировка"
+    },
     {
       "version": "1.0.25",
       "date": "2026-11-16",
@@ -374,12 +379,6 @@
       "sha1": "74f78445b6da346eb08a9f730e86dc77925eed46",
       "size": 4248954,
       "git": "e04fac72a68ef94aa0732bdb4edaf4304a751956"
-    },
-    {
-      "path": "mods/InventoryProfilesNext-fabric-1.21.11-2.2.6.jar",
-      "sha1": "0abb512cdd1cd8ea473c13a809b44a993ab05f51",
-      "size": 1331339,
-      "git": "0c34920ce816d8289340305e48589caf0ee6bce1"
     },
     {
       "path": "mods/iris-fabric-1.10.8+mc1.21.11.jar",
