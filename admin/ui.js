@@ -1,5 +1,5 @@
 // Страница панели. Имена файлов и любые чужие строки попадают в DOM только через textContent.
-import { canPush, client, DEV_TAGS, loadDevlog, loadState, mediaExt, modKey, nextVersion, publishDevlog, publishSafe } from './core.js?v=4';
+import { canPush, client, DEV_TAGS, loadDevlog, loadState, mediaExt, modKey, nextVersion, publishDevlog, publishSafe } from './core.js?v=5';
 
 const $ = (s) => document.querySelector(s);
 const el = (tag, cls, text) => {
@@ -181,12 +181,11 @@ $('#pub').onclick = async () => {
   try {
     const files = await Promise.all([...adds.values()].map(async (f) => ({ name: f.name, data: await f.arrayBuffer() })));
     state = await loadState(gh); // свежее состояние прямо перед публикацией: страница могла быть открыта давно
-    const done = await publishSafe(gh, state, { version, changelog: $('#notes').value, news: $('#news').value, adds: files, removes: [...removes], onStep: step });
+    const done = await publishSafe(gh, state, { version, changelog: $('#notes').value, adds: files, removes: [...removes], onStep: step });
     step('Готово');
     adds.clear();
     removes.clear();
     $('#notes').value = '';
-    $('#news').value = '';
     waitFor = done.pack.version;
     say(`Отправлено. Жду, пока GitHub опубликует версию ${waitFor} (1–6 минут)…`, 'warnc');
     await load();
@@ -197,7 +196,35 @@ $('#pub').onclick = async () => {
   $('#pub').disabled = !token;
 };
 
+// ---------- вкладки панели ----------
+const TAB_KEY = 'shizostan-panel-tab';
+function showTab(name) {
+  for (const b of document.querySelectorAll('.tabs [data-tab]')) b.classList.toggle('on', b.dataset.tab === name);
+  for (const sec of document.querySelectorAll('[data-page]')) sec.hidden = sec.dataset.page !== name;
+  try {
+    localStorage.setItem(TAB_KEY, name);
+  } catch {
+    // приватное окно — не запомним
+  }
+}
+for (const b of document.querySelectorAll('.tabs [data-tab]')) b.onclick = () => showTab(b.dataset.tab);
+try {
+  if (localStorage.getItem(TAB_KEY) === 'pack') showTab('pack');
+} catch {
+  // по умолчанию — новости
+}
+
 // ---------- посты для вкладки «Разработка» ----------
+let postTag = 'dev';
+for (const b of document.querySelectorAll('#dtags [data-tag]')) {
+  b.onclick = () => {
+    postTag = b.dataset.tag;
+    for (const x of document.querySelectorAll('#dtags [data-tag]')) {
+      x.classList.toggle('on', x === b);
+      x.setAttribute('aria-checked', String(x === b));
+    }
+  };
+}
 const dsay = (text, cls = 'm') => {
   $('#dstatus').className = `${cls} grow`;
   $('#dstatus').textContent = text;
@@ -275,7 +302,7 @@ $('#dpub').onclick = async () => {
   dsay('Публикую… не закрывай страницу.');
   try {
     const files = await Promise.all(media.map(async (m) => ({ name: m.file.name, data: await m.file.arrayBuffer() })));
-    posts = await publishDevlog(gh, { post: { title: $('#dtitle').value, tag: $('#dtag').value, text: $('#dtext').value }, media: files, onStep: dsay });
+    posts = await publishDevlog(gh, { post: { title: $('#dtitle').value, tag: postTag, text: $('#dtext').value, notify: $('#dnotify').checked }, media: files, onStep: dsay });
     for (const m of media) URL.revokeObjectURL(m.url);
     media.length = 0;
     $('#dtitle').value = '';

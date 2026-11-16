@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; connect-src 'self' https://api.github.com; img-src 'self' blob:; media-src 'self' blob:; base-uri 'none'; form-action 'none'">
-<title>Сборка SHIZOSTAN</title>
+<title>Панель SHIZOSTAN</title>
 <style>
 :root{--t:#f5f0fb;--m:#a99fbd;--g:rgba(255,255,255,.06);--l:rgba(255,255,255,.1);--pink:#f03fd0;--ok:#5fe39a;--warn:#ffc457;--bad:#ff6b81;color-scheme:dark}
 *{box-sizing:border-box}
@@ -36,6 +36,10 @@ li.off .n{text-decoration:line-through;color:var(--m)}
 pre{margin:0;white-space:pre-wrap;word-break:break-word;font:13px/1.6 Consolas,monospace;background:rgba(8,5,20,.5);border-radius:12px;padding:14px}
 .okc{color:var(--ok)}.badc{color:var(--bad)}.warnc{color:var(--warn)}
 [hidden]{display:none!important}
+.tabs{display:flex;gap:6px;background:rgba(20,12,44,.85);border:1px solid var(--l);border-radius:16px;padding:5px;position:sticky;top:8px;z-index:2;backdrop-filter:blur(10px)}.tabs button{flex:1;border:0;background:none;color:var(--m)}.tabs button.on{background:rgba(255,255,255,.14);color:var(--t)}.tabs #logout{flex:none}
+.tags{display:flex;gap:8px;flex-wrap:wrap}.tags button{border-radius:20px;padding:7px 14px}.tags button.on.dev{background:rgba(155,69,245,.35);border-color:#b37bff}.tags button.on.event{background:rgba(255,196,87,.25);border-color:var(--warn)}.tags button.on.update{background:rgba(95,227,154,.22);border-color:var(--ok)}.tags button.on.news{background:rgba(240,63,208,.25);border-color:var(--pink)}
+.tag.news{background:rgba(240,63,208,.2);color:#ff9be9}
+label.chk{flex-direction:row;align-items:center;gap:10px;color:var(--t);font-weight:500;font-size:14px}.chk input{width:18px;height:18px;accent-color:var(--pink)}
 #ddrop{border:2px dashed var(--l);border-radius:16px;padding:20px;text-align:center;cursor:pointer}#ddrop.over{border-color:var(--pink);background:rgba(240,63,208,.12)}
 #dmedia{display:flex;gap:10px;flex-wrap:wrap;max-height:none}#dmedia li{position:relative;width:120px}#dmedia img,#dmedia video{width:120px;height:80px;object-fit:cover;border-radius:10px;display:block;background:rgba(8,5,20,.5)}#dmedia button{position:absolute;top:4px;right:4px;padding:2px 8px}
 #dposts li{display:flex;gap:10px;align-items:center;padding:8px 2px;border-top:1px solid var(--l)}#dposts li:first-child{border:0}
@@ -44,7 +48,7 @@ pre{margin:0;white-space:pre-wrap;word-break:break-word;font:13px/1.6 Consolas,m
 </head>
 <body>
 <main>
-  <h1>Сборка SHIZOSTAN</h1>
+  <h1>Панель SHIZOSTAN</h1>
 
   <section class="card" id="login" hidden>
     <h2>Вход для админов</h2>
@@ -60,46 +64,64 @@ pre{margin:0;white-space:pre-wrap;word-break:break-word;font:13px/1.6 Consolas,m
     <p class="m">Ключ даёт право изменять твои публичные репозитории — никому его не показывай. Отозвать можно на той же странице GitHub.</p>
   </section>
 
-  <section class="card">
+  <nav class="tabs" aria-label="Разделы панели">
+    <button data-tab="posts" class="on">📰 Новости и разработка</button>
+    <button data-tab="pack">📦 Сборка модов</button>
+    <button id="logout" hidden>Выйти</button>
+  </nav>
+
+  <!-- Новости, ивенты, разработка: публикуются отдельно, сборку не трогают -->
+  <section class="card" data-page="posts">
+    <h2>Новый пост в лаунчер</h2>
+    <p class="m">Появится во вкладке «Разработка» лаунчера (новости и ивенты — ещё и на главной). Сборку и её версию <b>не трогает</b> — публикуй сколько угодно.</p>
+    <label>Тег</label>
+    <div class="tags" id="dtags" role="radiogroup" aria-label="Тег поста">
+      <button type="button" data-tag="dev" class="dev on" role="radio" aria-checked="true">🛠 Разработка</button>
+      <button type="button" data-tag="event" class="event" role="radio" aria-checked="false">🎉 Ивент</button>
+      <button type="button" data-tag="news" class="news" role="radio" aria-checked="false">📢 Новость</button>
+      <button type="button" data-tag="update" class="update" role="radio" aria-checked="false">⬆ Обновление</button>
+    </div>
+    <label>Заголовок<input id="dtitle" maxlength="120" autocomplete="off" placeholder="Например: Турнир строителей в субботу"></label>
+    <label>Текст<textarea id="dtext" rows="6" placeholder="Что готовим, когда начнётся, что получат игроки"></textarea></label>
+    <div id="ddrop" tabindex="0" role="button">Перетащи сюда <b>картинки, GIF или видео</b> или нажми, чтобы выбрать<br><span class="m">PNG, JPG, GIF, WebP, MP4, WebM — до 25 МБ каждый, до 10 штук. Первая станет обложкой. Можно и без картинок.</span></div>
+    <input id="dpick" type="file" accept=".png,.jpg,.jpeg,.gif,.webp,.mp4,.webm" multiple hidden>
+    <ul id="dmedia"></ul>
+    <label class="chk"><input type="checkbox" id="dnotify" checked> Прислать игрокам уведомление</label>
+    <div class="row"><button id="dpub" class="go">Опубликовать пост</button><span id="dstatus" class="m grow" role="status"></span></div>
+  </section>
+
+  <section class="card" data-page="posts">
+    <h2>Опубликованные посты</h2>
+    <ul id="dposts"></ul>
+  </section>
+
+  <!-- Сборка модов -->
+  <section class="card" data-page="pack" hidden>
     <div class="row">
       <div class="stat"><span class="m">Собрана версия</span><b id="cur">…</b></div>
       <div class="stat"><span class="m">У игроков сейчас</span><b id="live">…</b></div>
       <div class="stat"><span class="m">Модов</span><b id="count">…</b></div>
-      <button id="logout" hidden>Выйти</button>
     </div>
     <p id="sync" class="m" role="status"></p>
   </section>
 
-  <section class="card">
+  <section class="card" data-page="pack" hidden>
     <div id="drop" tabindex="0" role="button">Перетащи сюда файлы <b>.jar</b> или нажми, чтобы выбрать<br><span class="m">Обновляешь мод? Добавь новый файл и удали старый.</span></div>
     <input id="pick" type="file" accept=".jar" multiple hidden>
     <input id="find" type="search" placeholder="Поиск мода…" aria-label="Поиск мода">
     <ul id="list"></ul>
   </section>
 
-  <section class="card">
-    <h2>Выпустить обновление</h2>
+  <section class="card" data-page="pack" hidden>
+    <h2>Выпустить обновление сборки</h2>
     <p id="changes" class="m"></p>
     <label>Номер версии<input id="ver" autocomplete="off"></label>
     <label>Что нового (игроки увидят это в лаунчере)<textarea id="notes" rows="3"></textarea></label>
-    <label>Новость на главной лаунчера — необязательно (ивенты, вайп, техработы)<textarea id="news" rows="2"></textarea></label>
-    <div class="row"><button id="pub" class="go">Опубликовать</button><span id="status" class="m grow" role="status"></span></div>
+    <p class="m">Новости и ивенты публикуются во вкладке «Новости и разработка» — без обновления сборки.</p>
+    <div class="row"><button id="pub" class="go">Опубликовать сборку</button><span id="status" class="m grow" role="status"></span></div>
     <pre id="out" hidden></pre>
   </section>
-<section class="card">
-    <h2>Разработка — пост для лаунчера</h2>
-    <p class="m">Превью будущих обновлений, ивенты, новости. Появится во вкладке «Разработка», игрокам придёт уведомление. Версию сборки не меняет.</p>
-    <label>Заголовок<input id="dtitle" maxlength="120" autocomplete="off" placeholder="Например: Новый биом — Кристальные пещеры"></label>
-    <label>Тип<select id="dtag"><option value="dev">Разработка</option><option value="event">Ивент</option><option value="update">Обновление</option></select></label>
-    <label>Текст<textarea id="dtext" rows="5" placeholder="Что готовим, когда выйдет, что изменится"></textarea></label>
-    <div id="ddrop" tabindex="0" role="button">Перетащи сюда <b>картинки, GIF или видео</b> или нажми, чтобы выбрать<br><span class="m">PNG, JPG, GIF, WebP, MP4, WebM — до 25 МБ каждый, до 10 штук. Первая станет обложкой.</span></div>
-    <input id="dpick" type="file" accept=".png,.jpg,.jpeg,.gif,.webp,.mp4,.webm" multiple hidden>
-    <ul id="dmedia"></ul>
-    <div class="row"><button id="dpub" class="go">Опубликовать пост</button><span id="dstatus" class="m grow" role="status"></span></div>
-    <h2>Опубликованные посты</h2>
-    <ul id="dposts"></ul>
-  </section>
 </main>
-<script type="module" src="ui.js?v=4"></script>
+<script type="module" src="ui.js?v=5"></script>
 </body>
 </html>

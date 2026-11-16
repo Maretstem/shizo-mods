@@ -134,7 +134,7 @@ async function pushBranches(gh, commit) {
 }
 
 // ---------- вкладка «Разработка» в лаунчере: devlog.json + картинки, GIF и видео в папке devlog/ ----------
-export const DEV_TAGS = { dev: 'Разработка', event: 'Ивент', update: 'Обновление' };
+export const DEV_TAGS = { dev: 'Разработка', event: 'Ивент', news: 'Новость', update: 'Обновление' };
 const MEDIA = { png: 'image', jpg: 'image', jpeg: 'image', gif: 'image', webp: 'image', mp4: 'video', webm: 'video' };
 const MAX_MEDIA = 25 * 1024 * 1024; // большие GIF и видео игроки будут грузить долго
 export const mediaExt = (name) => {
@@ -151,7 +151,7 @@ export async function loadDevlog(gh) {
   return { head, treeSha, paths: new Set(tree.tree.map((e) => e.path)), posts: Array.isArray(devlog.posts) ? devlog.posts : [] };
 }
 
-// post: { title, tag, text } + media: [{ name, data: ArrayBuffer }] — новый пост; removeId — удалить пост вместе с его файлами.
+// post: { title, tag, text, notify } + media: [{ name, data: ArrayBuffer }] — новый пост; removeId — удалить пост вместе с его файлами.
 // Версию сборки не трогает. Если другой админ публиковал одновременно — берёт свежее состояние и повторяет.
 export async function publishDevlog(gh, { post, media = [], removeId, onStep = () => {}, now = new Date() }) {
   let fresh;
@@ -173,7 +173,7 @@ export async function publishDevlog(gh, { post, media = [], removeId, onStep = (
       const ext = mediaExt(m.name);
       files.push({ path: `devlog/${id}-${n}.${ext}`, type: MEDIA[ext], sha: (await gh('/git/blobs', { method: 'POST', body: { content: base64(m.data), encoding: 'base64' } })).sha });
     }
-    fresh = { id, date: now.toISOString(), title, tag: post.tag, text: String(post.text ?? '').trim().slice(0, 5000), media: files.map((f) => ({ src: f.path, type: f.type })), files };
+    fresh = { id, date: now.toISOString(), title, tag: post.tag, notify: post.notify !== false, text: String(post.text ?? '').trim().slice(0, 5000), media: files.map((f) => ({ src: f.path, type: f.type })), files };
   }
   for (let attempt = 1; ; attempt++) {
     const s = await loadDevlog(gh);
