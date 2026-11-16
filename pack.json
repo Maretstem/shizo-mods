@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "- сортировка",
+  "changelog": "новый мод на 3д модельки",
   "history": [
+    {
+      "version": "1.0.27",
+      "date": "2026-11-16",
+      "changelog": "новый мод на 3д модельки"
+    },
     {
       "version": "1.0.26",
       "date": "2026-11-16",
@@ -243,10 +248,22 @@
       "git": "a3f020a534570a7b7c941677c98a6df042446b97"
     },
     {
+      "path": "mods/cpm-offline-bridge-1.0.0.jar",
+      "sha1": "e6d18e30b4d27c503484355e198d8e8ab9afd3a8",
+      "size": 24394,
+      "git": "cb4d11caf83f38700bca3ccb6a886b0fa770effe"
+    },
+    {
       "path": "mods/crystal_eye-1.0.0-client.jar",
       "sha1": "71b2ae0a5e04369289985fdb9b0ec5c28ac4f7f4",
       "size": 4193321,
       "git": "4de0b5614d27a1fd1e077d3964ec8f18b1afcb1f"
+    },
+    {
+      "path": "mods/CustomPlayerModels-Fabric-1.21.11-0.6.27a.jar",
+      "sha1": "cd7e67126061a36d673174b7ad759201f8e9a96a",
+      "size": 2867845,
+      "git": "92a5821faa3ac6370047ff954624b9c329296d4c"
     },
     {
       "path": "mods/CustomSkinLoader_Universal-15.1.jar",
@@ -740,5 +757,6 @@
       "size": 1126948,
       "git": "60f44f036aa9159beb9942338cd715d2845d8586"
     }
-  ]
+  ],
+  "news": []
 }
