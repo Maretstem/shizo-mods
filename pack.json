@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "обновление итостоков",
+  "changelog": "обновление итостоков и авто сортировка",
   "history": [
+    {
+      "version": "1.0.24",
+      "date": "2026-11-16",
+      "changelog": "обновление итостоков и авто сортировка"
+    },
     {
       "version": "1.0.23",
       "date": "2026-11-16",
@@ -228,6 +233,12 @@
       "git": "a3f020a534570a7b7c941677c98a6df042446b97"
     },
     {
+      "path": "mods/crystal_eye-1.0.0-client.jar",
+      "sha1": "71b2ae0a5e04369289985fdb9b0ec5c28ac4f7f4",
+      "size": 4193321,
+      "git": "4de0b5614d27a1fd1e077d3964ec8f18b1afcb1f"
+    },
+    {
       "path": "mods/CustomSkinLoader_Universal-15.1.jar",
       "sha1": "324e6921ecd576e44875981466e7f22170b6541a",
       "size": 222917,
@@ -360,16 +371,22 @@
       "git": "e04fac72a68ef94aa0732bdb4edaf4304a751956"
     },
     {
+      "path": "mods/InventoryProfilesNext-fabric-1.21.11-2.2.6.jar",
+      "sha1": "0abb512cdd1cd8ea473c13a809b44a993ab05f51",
+      "size": 1331339,
+      "git": "0c34920ce816d8289340305e48589caf0ee6bce1"
+    },
+    {
       "path": "mods/iris-fabric-1.10.8+mc1.21.11.jar",
       "sha1": "acfbe6d065b6c35d85c14da04d35e073363f3acf",
       "size": 2807718,
       "git": "5dd866cffc0b76dbc98f9c666eb47b4c64947c0a"
     },
     {
-      "path": "mods/istoki-client-2.22.0.jar",
-      "sha1": "a72bd8c313fc1f5112fd0a6665308f7b589c6e50",
-      "size": 10277344,
-      "git": "4e97375b2c795d8efe55eb11f097103799a5230c"
+      "path": "mods/istoki-client-2.23.0.jar",
+      "sha1": "bda67418984e2d5f21f73ea15ff1e61e02fdd93d",
+      "size": 10283460,
+      "git": "4dfa23c697767d3576a5554d66e072f9e1e35a88"
     },
     {
       "path": "mods/istoki-menu.jar",
