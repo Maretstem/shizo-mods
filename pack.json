@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "",
+  "changelog": "обновление главного меню",
   "history": [
+    {
+      "version": "1.0.29",
+      "date": "2026-11-17",
+      "changelog": "обновление главного меню"
+    },
     {
       "version": "1.0.28",
       "date": "2026-11-16",
@@ -415,12 +420,6 @@
       "git": "4dfa23c697767d3576a5554d66e072f9e1e35a88"
     },
     {
-      "path": "mods/istoki-menu.jar",
-      "sha1": "f6c32c86d6879054bf90206b72d88fac43fe2481",
-      "size": 134486,
-      "git": "e5941c29505c87c557e1b9c7ec7c026297efe790"
-    },
-    {
       "path": "mods/Ixeris-4.6.11+1.21.11-fabric.jar",
       "sha1": "821da405050266e18618f92b7493f590d4c3dbf5",
       "size": 786367,
@@ -659,6 +658,12 @@
       "sha1": "9df93ab6442fa374c17fab6b5181fe2c215d9d5b",
       "size": 182846,
       "git": "b97222cdda5d2f0cfa86f3bc9be5aef83987ea48"
+    },
+    {
+      "path": "mods/shizo-auth-1.0.0.jar",
+      "sha1": "7c594142ee01a142fb3b1f07537dda95207c5064",
+      "size": 280654,
+      "git": "b439e006b6f84a9868880339fdd03206bede8b87"
     },
     {
       "path": "mods/shizo-optimizer-1.0.0.jar",
