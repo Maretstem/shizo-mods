@@ -1,6 +1,6 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
@@ -8,6 +8,11 @@
   },
   "changelog": "",
   "history": [
+    {
+      "version": "1.0.31",
+      "date": "2026-11-18",
+      "changelog": ""
+    },
     {
       "version": "1.0.30",
       "date": "2026-11-17",
@@ -152,11 +157,6 @@
       "version": "1.0.1",
       "date": "2026-11-12",
       "changelog": "Binary Barrier обновлён до 1.4.0."
-    },
-    {
-      "version": "1.0.0",
-      "date": "2026-11-12",
-      "changelog": "Первая версия сборки: 89 модов."
     }
   ],
   "files": [
@@ -665,10 +665,10 @@
       "git": "b97222cdda5d2f0cfa86f3bc9be5aef83987ea48"
     },
     {
-      "path": "mods/shizo-auth-1.1.0.jar",
-      "sha1": "b4d92cea2ec11ed9c9dbf26cea26e59447d7dc90",
-      "size": 278319,
-      "git": "c8d45601c34b9b942f686587305fd639c4968e8c"
+      "path": "mods/shizo-auth-1.2.0.jar",
+      "sha1": "9751e77d90f2e2dccd7d223a2277930d5443ac7e",
+      "size": 294413,
+      "git": "88faf996a79f2d69511a3487c85b9369479bbcea"
     },
     {
       "path": "mods/shizo-optimizer-1.0.0.jar",
