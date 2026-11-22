@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.36",
+  "version": "1.0.37",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "Новогодний вайбек",
+  "changelog": "",
   "history": [
+    {
+      "version": "1.0.37",
+      "date": "2026-11-22",
+      "changelog": ""
+    },
     {
       "version": "1.0.36",
       "date": "2026-11-22",
@@ -152,11 +157,6 @@
       "version": "1.0.8",
       "date": "2026-11-13",
       "changelog": "Готовимся к ОБТ!"
-    },
-    {
-      "version": "1.0.7",
-      "date": "2026-11-13",
-      "changelog": "Токи тут ыыыыыыы"
     }
   ],
   "files": [
@@ -665,10 +665,10 @@
       "git": "b97222cdda5d2f0cfa86f3bc9be5aef83987ea48"
     },
     {
-      "path": "mods/shizo-auth-1.2.0.jar",
-      "sha1": "9751e77d90f2e2dccd7d223a2277930d5443ac7e",
-      "size": 294413,
-      "git": "88faf996a79f2d69511a3487c85b9369479bbcea"
+      "path": "mods/shizo-auth-1.3.0.jar",
+      "sha1": "6f2fb19ded98fc5c413dc0e2af56dc070c24348f",
+      "size": 363089,
+      "git": "85983fde626dc50bd7b224babaab98416a850a89"
     },
     {
       "path": "mods/shizo-optimizer-1.0.0.jar",
