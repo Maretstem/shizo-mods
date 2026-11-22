@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.35",
+  "version": "1.0.36",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "",
+  "changelog": "Новогодний вайбек",
   "history": [
+    {
+      "version": "1.0.36",
+      "date": "2026-11-22",
+      "changelog": "Новогодний вайбек"
+    },
     {
       "version": "1.0.35",
       "date": "2026-11-22",
@@ -152,11 +157,6 @@
       "version": "1.0.7",
       "date": "2026-11-13",
       "changelog": "Токи тут ыыыыыыы"
-    },
-    {
-      "version": "1.0.6",
-      "date": "2026-11-13",
-      "changelog": "обновление ради обновы"
     }
   ],
   "files": [
@@ -477,6 +477,12 @@
       "sha1": "4d6d935f87b0f269148cfe6079dbed332b9133b8",
       "size": 1018314,
       "git": "d38469ccfb70bb896fc66d267f6acdd9ff6f043f"
+    },
+    {
+      "path": "mods/mcw-holidays-1.1.2-mc1.21.11fabric.jar",
+      "sha1": "a6b39b49b2bd8af44556c4a2435edf6d729bf968",
+      "size": 983913,
+      "git": "30d1899b5c5372157a7a42ad6894be7312f28a31"
     },
     {
       "path": "mods/mezz_config-1.21.11-fabric-0.7.1.jar",
