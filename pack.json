@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "",
+  "changelog": "Обновлен ии мобов",
   "history": [
+    {
+      "version": "1.0.32",
+      "date": "2026-11-22",
+      "changelog": "Обновлен ии мобов"
+    },
     {
       "version": "1.0.31",
       "date": "2026-11-18",
@@ -152,11 +157,6 @@
       "version": "1.0.3",
       "date": "2026-11-12",
       "changelog": "ОБНОВЛЕНИЕ БЫРЬЕРА"
-    },
-    {
-      "version": "1.0.1",
-      "date": "2026-11-12",
-      "changelog": "Binary Barrier обновлён до 1.4.0."
     }
   ],
   "files": [
@@ -231,12 +231,6 @@
       "sha1": "4eceb683cbe8c9ec2ba354825f8076ab2370d4d1",
       "size": 100191,
       "git": "a4fb5a835d77df763485a483748fe0ce702b0607"
-    },
-    {
-      "path": "mods/chefs-delight-1.0.5-fabric-1.21.11.jar",
-      "sha1": "7848579a9cc8be4299de98010741e03edca7d4d8",
-      "size": 110671,
-      "git": "7be12fa3c16c37fbfa6354e8df73e95765ac19b0"
     },
     {
       "path": "mods/cloth-config-21.11.153-fabric.jar",
@@ -495,6 +489,12 @@
       "sha1": "9d4ea7bb3432d8e1021f49daa408a37e04c76587",
       "size": 64891,
       "git": "e54f7368071fc7579746f216622d88ece18d15e4"
+    },
+    {
+      "path": "mods/mob-ai-tweaks-1.11.3-1.21.11.jar",
+      "sha1": "6350c3c9fbe2331ce0d7ce10ee220b01418bd451",
+      "size": 630747,
+      "git": "6f20edeaecb6d2e5f6dd646a612e7bc7741647af"
     },
     {
       "path": "mods/modernfix-5.26.3-build.2.jar",
