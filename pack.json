@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.37",
+  "version": "1.0.38",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "",
+  "changelog": "Кастомные диски!",
   "history": [
+    {
+      "version": "1.0.38",
+      "date": "2026-11-22",
+      "changelog": "Кастомные диски!"
+    },
     {
       "version": "1.0.37",
       "date": "2026-11-22",
@@ -152,11 +157,6 @@
       "version": "1.0.9",
       "date": "2026-11-13",
       "changelog": "Обновили оптимизацию клиента:3"
-    },
-    {
-      "version": "1.0.8",
-      "date": "2026-11-13",
-      "changelog": "Готовимся к ОБТ!"
     }
   ],
   "files": [
