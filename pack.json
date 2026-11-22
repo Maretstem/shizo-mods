@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "откат",
+  "changelog": "",
   "history": [
+    {
+      "version": "1.0.34",
+      "date": "2026-11-22",
+      "changelog": ""
+    },
     {
       "version": "1.0.33",
       "date": "2026-11-22",
@@ -150,11 +155,6 @@
     },
     {
       "version": "1.0.5",
-      "date": "2026-11-13",
-      "changelog": "ОБНОВЛЕНИЕ ИСТОКОВ"
-    },
-    {
-      "version": "1.0.4",
       "date": "2026-11-13",
       "changelog": "ОБНОВЛЕНИЕ ИСТОКОВ"
     }
@@ -413,10 +413,10 @@
       "git": "5dd866cffc0b76dbc98f9c666eb47b4c64947c0a"
     },
     {
-      "path": "mods/istoki-client-2.23.0.jar",
-      "sha1": "bda67418984e2d5f21f73ea15ff1e61e02fdd93d",
-      "size": 10283460,
-      "git": "4dfa23c697767d3576a5554d66e072f9e1e35a88"
+      "path": "mods/istoki-client-2.24.1.jar",
+      "sha1": "753afeb1fe6e5d615677cd0dce2cf2bac1053c03",
+      "size": 10300689,
+      "git": "b9dc7b99a46f7230a737ad8e49742ccb8797d50c"
     },
     {
       "path": "mods/Ixeris-4.6.11+1.21.11-fabric.jar",
