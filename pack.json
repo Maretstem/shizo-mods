@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "Обновлен ии мобов",
+  "changelog": "откат",
   "history": [
+    {
+      "version": "1.0.33",
+      "date": "2026-11-22",
+      "changelog": "откат"
+    },
     {
       "version": "1.0.32",
       "date": "2026-11-22",
@@ -152,11 +157,6 @@
       "version": "1.0.4",
       "date": "2026-11-13",
       "changelog": "ОБНОВЛЕНИЕ ИСТОКОВ"
-    },
-    {
-      "version": "1.0.3",
-      "date": "2026-11-12",
-      "changelog": "ОБНОВЛЕНИЕ БЫРЬЕРА"
     }
   ],
   "files": [
@@ -489,12 +489,6 @@
       "sha1": "9d4ea7bb3432d8e1021f49daa408a37e04c76587",
       "size": 64891,
       "git": "e54f7368071fc7579746f216622d88ece18d15e4"
-    },
-    {
-      "path": "mods/mob-ai-tweaks-1.11.3-1.21.11.jar",
-      "sha1": "6350c3c9fbe2331ce0d7ce10ee220b01418bd451",
-      "size": 630747,
-      "git": "6f20edeaecb6d2e5f6dd646a612e7bc7741647af"
     },
     {
       "path": "mods/modernfix-5.26.3-build.2.jar",
