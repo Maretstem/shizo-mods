@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.42",
+  "version": "1.0.43",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "",
+  "changelog": "удаление старой версии",
   "history": [
+    {
+      "version": "1.0.43",
+      "date": "2026-11-24",
+      "changelog": "удаление старой версии"
+    },
     {
       "version": "1.0.42",
       "date": "2026-11-24",
@@ -152,11 +157,6 @@
       "version": "1.0.14",
       "date": "2026-11-13",
       "changelog": "обновление оптимизации"
-    },
-    {
-      "version": "1.0.13",
-      "date": "2026-11-13",
-      "changelog": "Добавили новый функционал для лошадей!"
     }
   ],
   "files": [
@@ -657,12 +657,6 @@
       "sha1": "9df93ab6442fa374c17fab6b5181fe2c215d9d5b",
       "size": 182846,
       "git": "b97222cdda5d2f0cfa86f3bc9be5aef83987ea48"
-    },
-    {
-      "path": "mods/shizo-auth-client-1.5.0.jar",
-      "sha1": "6b6dd9d61325260795f1cbcca324d0eba722e82d",
-      "size": 422985,
-      "git": "a2425589b2672ed2d003981008aaff3cbac6e26e"
     },
     {
       "path": "mods/shizo-auth-client-1.7.0.jar",
