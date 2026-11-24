@@ -1,13 +1,18 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.43",
+  "version": "1.0.44",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
     "version": "0.20.1"
   },
-  "changelog": "удаление старой версии",
+  "changelog": "",
   "history": [
+    {
+      "version": "1.0.44",
+      "date": "2026-11-24",
+      "changelog": ""
+    },
     {
       "version": "1.0.43",
       "date": "2026-11-24",
@@ -152,11 +157,6 @@
       "version": "1.0.15",
       "date": "2026-11-13",
       "changelog": "фикс запуска"
-    },
-    {
-      "version": "1.0.14",
-      "date": "2026-11-13",
-      "changelog": "обновление оптимизации"
     }
   ],
   "files": [
@@ -657,12 +657,6 @@
       "sha1": "9df93ab6442fa374c17fab6b5181fe2c215d9d5b",
       "size": 182846,
       "git": "b97222cdda5d2f0cfa86f3bc9be5aef83987ea48"
-    },
-    {
-      "path": "mods/shizo-auth-client-1.7.0.jar",
-      "sha1": "c35b1a739b6869285b67e243123f8ff2c9a71527",
-      "size": 456244,
-      "git": "c6491b2b4fe3f31ca78d829ea7ce5022e000125c"
     },
     {
       "path": "mods/shizo-optimizer-1.0.0.jar",
