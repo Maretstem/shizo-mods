@@ -1,20 +1,6 @@
 {
   "posts": [
     {
-      "id": "mwkmsz6o",
-      "date": "2026-11-17T11:51:11.904Z",
-      "title": "а ведь это будет на релизе",
-      "tag": "dev",
-      "notify": true,
-      "text": "",
-      "media": [
-        {
-          "src": "devlog/mwkmsz6o-0.mp4",
-          "type": "video"
-        }
-      ]
-    },
-    {
       "id": "mwjiie6m",
       "date": "2026-11-16T17:03:13.486Z",
       "title": "обновление: добовление мода на 3д модельки",
