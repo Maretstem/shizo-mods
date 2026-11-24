@@ -1,6 +1,6 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.46",
+  "version": "1.0.47",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
@@ -8,6 +8,11 @@
   },
   "changelog": "",
   "history": [
+    {
+      "version": "1.0.47",
+      "date": "2026-11-24",
+      "changelog": ""
+    },
     {
       "version": "1.0.46",
       "date": "2026-11-24",
@@ -152,11 +157,6 @@
       "version": "1.0.18",
       "date": "2026-11-15",
       "changelog": "чикенбурбер"
-    },
-    {
-      "version": "1.0.17",
-      "date": "2026-11-14",
-      "changelog": "обнова ради обновы"
     }
   ],
   "files": [
@@ -413,6 +413,12 @@
       "git": "5dd866cffc0b76dbc98f9c666eb47b4c64947c0a"
     },
     {
+      "path": "mods/istoki-client-2.26.0.jar",
+      "sha1": "61fd6e77ee114b927de95a8fce976814f0a43604",
+      "size": 10330179,
+      "git": "95e88933b153cec4290dab79c8bdaeaae876d7a7"
+    },
+    {
       "path": "mods/Ixeris-4.6.11+1.21.11-fabric.jar",
       "sha1": "821da405050266e18618f92b7493f590d4c3dbf5",
       "size": 786367,
@@ -659,10 +665,10 @@
       "git": "b97222cdda5d2f0cfa86f3bc9be5aef83987ea48"
     },
     {
-      "path": "mods/shizo-auth-client-1.6.0.jar",
-      "sha1": "979593b50d86c9cb76da57cc9f8ea60918a2b8e7",
-      "size": 456252,
-      "git": "3d58684ac58a4ab307db3d1e494b533a259d4457"
+      "path": "mods/shizo-auth-client-1.7.0.jar",
+      "sha1": "c35b1a739b6869285b67e243123f8ff2c9a71527",
+      "size": 456244,
+      "git": "c6491b2b4fe3f31ca78d829ea7ce5022e000125c"
     },
     {
       "path": "mods/shizo-optimizer-1.0.0.jar",
