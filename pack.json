@@ -1,6 +1,6 @@
 {
   "name": "SHIZOSTAN",
-  "version": "1.0.48",
+  "version": "1.0.49",
   "minecraft": "1.21.11",
   "loader": {
     "type": "fabric",
@@ -8,6 +8,11 @@
   },
   "changelog": "",
   "history": [
+    {
+      "version": "1.0.49",
+      "date": "2026-11-26",
+      "changelog": ""
+    },
     {
       "version": "1.0.48",
       "date": "2026-11-25",
@@ -150,11 +155,6 @@
     },
     {
       "version": "1.0.20",
-      "date": "2026-11-15",
-      "changelog": ""
-    },
-    {
-      "version": "1.0.19",
       "date": "2026-11-15",
       "changelog": ""
     }
@@ -663,6 +663,12 @@
       "sha1": "9df93ab6442fa374c17fab6b5181fe2c215d9d5b",
       "size": 182846,
       "git": "b97222cdda5d2f0cfa86f3bc9be5aef83987ea48"
+    },
+    {
+      "path": "mods/shizo-artifacts-client-0.2.1.jar",
+      "sha1": "89d778f58d66df512633189d746881b88263fff9",
+      "size": 186172,
+      "git": "5c0bf52f5a5c2cdbdea17000972806e1eb9e8946"
     },
     {
       "path": "mods/shizo-auth-client-1.7.0.jar",
